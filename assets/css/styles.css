@@ -19,6 +19,7 @@
   --paper: #f2f2f3;
   --mist: #b9c9cc;
   --ink: #102f31;
+  --abyss: #071f21;
   --white: #fff;
   --shadow-paper:
     inset 0 2px 0 rgba(255, 255, 255, .72),
@@ -1038,11 +1039,12 @@ input {
 }
 
 .toolbox-section {
+  --toolbox-coral-lift: clamp(5rem, 8vw, 8rem);
+  --toolbox-small-coral-extra-lift: clamp(3rem, 5vw, 5rem);
   min-height: 78rem;
   padding-block: 8rem 14rem;
   color: var(--paper);
   background: linear-gradient(180deg, var(--teal), #00666c 58%, var(--deep));
-  isolation: isolate;
 }
 
 .toolbox-section .eyebrow.light {
@@ -1068,7 +1070,7 @@ input {
 
 .toolbox-bottom-coral-center {
   left: 50%;
-  bottom: 8rem;
+  bottom: 0;
   z-index: 0;
   width: min(150%, 120rem);
   filter:
@@ -1078,7 +1080,8 @@ input {
 
 .toolbox-bottom-coral-left,
 .toolbox-bottom-coral-right {
-  bottom: -4rem;
+  bottom: calc(var(--toolbox-coral-lift) - 4rem);
+  z-index: 4;
   width: clamp(32rem, 48vw, 53rem);
 }
 
@@ -1092,16 +1095,19 @@ input {
 
 }
 
+.treasure-scene {
+  position: relative;
+}
+
 .treasure-stage {
   position: relative;
-  z-index: 4;
   width: min(calc(100% - 2rem), 84rem);
   margin-inline: auto;
 }
 
 .toolbox-heading {
   position: relative;
-  z-index: 4;
+  z-index: 7;
 }
 
 .treasure-part {
@@ -1125,28 +1131,27 @@ input {
 
 .treasure-content {
   position: relative;
-  z-index: 2;
   width: min(82%, 68rem);
   margin-inline: auto;
   padding-block: clamp(2rem, 4vw, 4rem) clamp(20rem, 25vw, 24rem);
 }
 
 .toolbox-side-coral {
-  z-index: 7;
+  z-index: 6;
   opacity: 1;
   filter:
     drop-shadow(0 4px 0 rgba(0, 49, 53, .22)) drop-shadow(0 11px 2px rgba(0, 30, 33, .48));
 }
 
 .toolbox-coral-two {
-  top: 17%;
+  top: calc(17% - var(--toolbox-coral-lift) - var(--toolbox-small-coral-extra-lift));
   left: -5.5rem;
   width: clamp(8rem, 12vw, 13rem);
   transform: rotate(55deg);
 }
 
 .toolbox-coral-three {
-  top: 38%;
+  top: calc(38% - var(--toolbox-coral-lift) - var(--toolbox-small-coral-extra-lift));
   right: -6rem;
   width: clamp(8rem, 13vw, 14rem);
   transform: scaleX(-1) rotate(52deg);
@@ -1158,7 +1163,30 @@ input {
   padding: clamp(1.2rem, 3vw, 2rem);
   padding-block-end: calc(clamp(1.2rem, 3vw, 2rem) + var(--resource-panel-tail));
   margin-block-end: calc(0rem - var(--resource-panel-tail));
+  border-color: transparent;
   color: var(--ink);
+  background: transparent;
+  background-image: none !important;
+  box-shadow: none;
+}
+
+.resource-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  border: 1px solid rgba(0, 81, 87, .18);
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--paper) url("../svg/paper-texture.svg") repeat 0 0 / 180px 180px;
+  background-blend-mode: multiply;
+  box-shadow: var(--shadow-paper);
+}
+
+.resource-panel>.resource-tabs,
+.resource-panel>.tab-content {
+  position: relative;
+  z-index: 7;
 }
 
 .resource-panel .tab-content {
@@ -1269,41 +1297,39 @@ input {
   --support-accordion-buffer: 44rem;
   position: relative;
   min-height: 60rem;
-  overflow: hidden;
-  padding-block: 10rem 12rem;
+  overflow-x: clip;
+  overflow-y: visible;
+  padding-block: clamp(11rem, 18vw, 18rem);
   color: var(--paper);
-  background: #003b40;
-  isolation: isolate;
+  background: var(--abyss);
 }
 
-.support-section::before {
-  content: "";
+.support-rock-layer {
   position: absolute;
-  inset: 0;
-  z-index: -2;
-  opacity: .9;
-  background:
-    radial-gradient(circle at 18% 26%, rgba(255, 200, 45, .2), transparent 12%),
-    radial-gradient(circle at 82% 64%, rgba(81, 196, 205, .11), transparent 18%),
-    linear-gradient(180deg, #00474d, #002d31);
-}
-
-.cave-edge {
-  position: absolute;
-  inset-inline: 0;
-  z-index: -1;
-  width: 100%;
-  height: 17.5rem;
-  object-fit: fill;
+  left: 50%;
+  z-index: 5;
+  display: block;
+  width: 112%;
+  max-width: none;
+  height: auto;
   pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 3px rgba(0, 0, 0, .5));
 }
 
-.cave-top {
-  inset-block-start: 0;
+.support-rock-layer-top {
+  top: 0;
+  transform: translate(-50%, -50%);
 }
 
-.cave-bottom {
-  inset-block-end: 0;
+.support-rock-layer-bottom {
+  bottom: 0;
+  filter: drop-shadow(0 -12px 3px rgba(0, 0, 0, .5));
+  transform: translate(-50%, 50%) scaleY(-1);
+}
+
+.about-section>.section-content {
+  z-index: 7;
 }
 
 .support-groups {
@@ -1315,10 +1341,15 @@ input {
   min-height: var(--support-accordion-buffer);
   overflow: visible;
   padding: 1.4rem;
-  border: 1px solid rgba(242, 242, 243, .18);
+  border: 2px solid var(--shallow);
   border-radius: 1.3rem;
-  background: rgba(0, 26, 29, .72);
+  color: var(--paper);
+  background: var(--deep);
   box-shadow: 0 13px 0 rgba(0, 0, 0, .18);
+}
+
+.support-category h3 {
+  color: var(--paper);
 }
 
 .category-icon {
@@ -1336,9 +1367,10 @@ input {
 
 .support-category details {
   margin-block-start: .75rem;
-  border: 1px solid rgba(242, 242, 243, .2);
+  border: 1px solid var(--shallow);
   border-radius: .85rem;
-  background: #00565c;
+  color: var(--paper);
+  background: var(--teal);
 }
 
 .support-category summary {
@@ -1359,8 +1391,8 @@ input {
 }
 
 .support-category .content-placeholder {
-  color: #fff;
-  background: #6f2923;
+  color: var(--paper);
+  background: var(--coral-dark);
   border-color: var(--coral-light);
 }
 
@@ -1580,6 +1612,10 @@ input {
   opacity: .72;
 }
 
+.support-section>.section-content {
+  z-index: 7;
+}
+
 .hero::after {
   z-index: 1;
 }
@@ -1611,14 +1647,6 @@ input {
 
 .wave-front {
   filter: drop-shadow(0 -9px 1px rgba(0, 61, 66, .48));
-}
-
-.cave-top {
-  filter: drop-shadow(0 10px 2px rgba(0, 0, 0, .64));
-}
-
-.cave-bottom {
-  filter: drop-shadow(0 -10px 2px rgba(0, 0, 0, .6));
 }
 
 .seabed {
@@ -1923,13 +1951,13 @@ input {
   }
 
   .toolbox-coral-two {
-    top: 16%;
+    top: calc(16% - var(--toolbox-coral-lift) - var(--toolbox-small-coral-extra-lift));
     left: -3.5rem;
     width: 7rem;
   }
 
   .toolbox-coral-three {
-    top: 39%;
+    top: calc(39% - var(--toolbox-coral-lift) - var(--toolbox-small-coral-extra-lift));
     right: -4rem;
     width: 7.5rem;
   }
@@ -1951,6 +1979,7 @@ input {
 
   .support-section {
     --support-accordion-buffer: 38rem;
+    padding-block-start: clamp(7rem, 24vw, 9rem);
     padding-block-end: 8rem;
   }
 
