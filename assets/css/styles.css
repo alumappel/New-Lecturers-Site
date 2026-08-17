@@ -320,30 +320,25 @@ input {
 
 .hero {
   position: relative;
-  min-height: 100svh;
-  padding-block: 9rem 7.5rem;
+  min-height: max(100svh, 52rem);
+  padding-block: 9rem 18rem;
   isolation: isolate;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, .95) 0 4%, transparent 4.2%),
-    linear-gradient(180deg, #e9fbfc 0%, #cdeff2 78%, #a9e2e6 100%);
+  background: linear-gradient(180deg, #effcfd 0%, #d7f2f4 57%, #b8e5e8 100%);
 }
 
 .sky-layer {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  opacity: .58;
-  background:
-    radial-gradient(ellipse at 72% 18%, rgba(255,255,255,.95) 0 6%, transparent 6.4%),
-    radial-gradient(ellipse at 77% 18%, rgba(255,255,255,.85) 0 8%, transparent 8.4%),
-    radial-gradient(ellipse at 86% 22%, rgba(255,255,255,.78) 0 6%, transparent 6.4%);
+  z-index: 0;
+  opacity: .42;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .72), transparent 38% 72%, rgba(255, 255, 255, .45));
   transform: translateY(var(--sky-shift));
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 .hero-copy .lead {
@@ -370,16 +365,20 @@ input {
   font-size: 1.12em;
 }
 
-.hero-illustration {
-  position: relative;
-  min-height: 27rem;
+.hero-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  direction: ltr;
+  pointer-events: none;
 }
 
 .springboard {
   position: absolute;
-  inset-block-end: 2rem;
-  inset-inline: 3% 0;
-  width: min(100%, 39rem);
+  left: clamp(-7rem, -5vw, -3.75rem);
+  bottom: clamp(10.5rem, 20vh, 13.5rem);
+  width: clamp(31rem, 43vw, 42rem);
+  z-index: 2;
   filter:
     url(#paper-grain-filter)
     drop-shadow(0 3px 0 rgba(0, 81, 87, .18))
@@ -388,9 +387,10 @@ input {
 
 .diver {
   position: absolute;
-  inset-block-start: 1.5rem;
-  inset-inline-end: 12%;
-  width: min(38%, 13rem);
+  left: clamp(13rem, 21vw, 21rem);
+  bottom: clamp(27.5rem, 49vh, 34rem);
+  width: clamp(6.2rem, 8vw, 8.75rem);
+  z-index: 3;
   transform: translate3d(0, var(--diver-drop), 0) rotate(var(--diver-rotate));
   transform-origin: 50% 75%;
   filter:
@@ -400,16 +400,31 @@ input {
   transition: filter .25s ease;
 }
 
-.sun {
+.hero-sun {
   position: absolute;
-  inset-block-start: 1rem;
-  inset-inline-start: 8%;
-  z-index: -1;
-  width: 7rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--yellow);
-  box-shadow: 0 0 0 1.1rem rgba(255, 200, 45, .18), 0 0 0 2.2rem rgba(255, 200, 45, .1);
+  top: clamp(4.75rem, 8vh, 6.25rem);
+  left: clamp(2rem, 7vw, 7rem);
+  width: clamp(8rem, 12vw, 11.5rem);
+  z-index: 0;
+  filter: drop-shadow(0 8px 1px rgba(183, 139, 0, .2));
+}
+
+.hero-cloud {
+  position: absolute;
+  z-index: 1;
+  filter: drop-shadow(0 7px 1px rgba(0, 81, 87, .12));
+}
+
+.hero-cloud-one {
+  top: clamp(8rem, 15vh, 11rem);
+  left: clamp(4%, 8vw, 10%);
+  width: clamp(8rem, 13vw, 13.5rem);
+}
+
+.hero-cloud-two {
+  top: clamp(4.75rem, 8vh, 6.5rem);
+  right: clamp(-3rem, 2vw, 2rem);
+  width: clamp(12rem, 20vw, 21rem);
 }
 
 .journey-nav {
@@ -498,24 +513,25 @@ input {
 .wave-stack {
   position: absolute;
   inset-inline: 0;
-  z-index: 1;
+  z-index: 3;
   inset-block-end: -2px;
-  height: 170px;
+  height: clamp(16rem, 34svh, 21rem);
+  overflow: visible;
   pointer-events: none;
 }
 
 .wave-layer {
   position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
-  width: 100%;
-  min-width: 62rem;
+  left: 50%;
+  width: max(100%, 108rem);
   height: auto;
+  transform: translateX(-50%);
 }
 
-.wave-back { z-index: 1; }
-.wave-middle { z-index: 2; }
-.wave-front { z-index: 3; }
+.wave-4 { z-index: 1; bottom: clamp(7.5rem, 14vh, 10rem); }
+.wave-3 { z-index: 2; bottom: clamp(5rem, 10vh, 7rem); }
+.wave-2 { z-index: 3; bottom: clamp(2.25rem, 5vh, 4rem); }
+.wave-1 { z-index: 4; bottom: 0; }
 
 .water-section {
   position: relative;
@@ -1314,12 +1330,15 @@ input {
     padding-block-start: 7rem;
   }
 
-  .hero-illustration {
-    min-height: 22rem;
+  .hero-copy {
+    max-width: 39rem;
+    margin-inline-end: auto;
   }
 
   .diver {
-    inset-inline-end: 18%;
+    left: clamp(11rem, 24vw, 15rem);
+    bottom: 29.5rem;
+    width: 6.5rem;
   }
 
   .checklist-group:nth-child(2),
@@ -1359,21 +1378,43 @@ input {
   }
 
   .hero {
-    padding-block-end: 6rem;
-  }
-
-  .hero-illustration {
-    min-height: 18rem;
+    min-height: 58rem;
+    padding-block-end: 19rem;
   }
 
   .springboard {
-    inset-inline-start: -8%;
-    width: 110%;
+    left: -8rem;
+    bottom: 11rem;
+    width: 31rem;
   }
 
   .diver {
-    inset-block-start: 0;
-    width: 34%;
+    left: 8.5rem;
+    bottom: 26.5rem;
+    width: 5.25rem;
+  }
+
+  .hero-sun {
+    top: 6rem;
+    left: 7%;
+    width: 7.5rem;
+  }
+
+  .hero-cloud-one {
+    top: 12rem;
+    left: -1rem;
+    width: 8rem;
+  }
+
+  .hero-cloud-two {
+    top: 5.5rem;
+    right: -4rem;
+    width: 13rem;
+    opacity: .72;
+  }
+
+  .wave-layer {
+    width: 72rem;
   }
 
   .journey-nav {
