@@ -250,7 +250,6 @@ input {
 .site-header {
   position: relative;
   color: var(--ink);
-  background: #daf3f4;
 }
 
 .navbar {
@@ -325,6 +324,7 @@ input {
   padding-block: 9rem 20rem;
   isolation: auto;
   overflow: hidden;
+  color: var(--ink);
   background: linear-gradient(180deg, #effcfd 0%, #d7f2f4 57%, var(--hero-sky-bottom) 100%);
 }
 
