@@ -223,7 +223,7 @@ input {
   margin-block-end: 3.25rem;
 }
 
-.section-heading > p:last-child {
+.section-heading>p:last-child {
   font-size: 1.2rem;
 }
 
@@ -381,9 +381,7 @@ input {
   width: clamp(31rem, 43vw, 42rem);
   z-index: 2;
   filter:
-    url(#paper-grain-filter)
-    drop-shadow(0 3px 0 rgba(0, 81, 87, .18))
-    drop-shadow(0 10px 1px rgba(0, 45, 49, .38));
+    url(#paper-grain-filter) drop-shadow(0 3px 0 rgba(0, 81, 87, .18)) drop-shadow(0 10px 1px rgba(0, 45, 49, .38));
 }
 
 .diver {
@@ -395,9 +393,7 @@ input {
   transform: translate3d(0, var(--diver-drop), 0) rotate(var(--diver-rotate));
   transform-origin: 50% 75%;
   filter:
-    url(#paper-grain-filter)
-    drop-shadow(0 3px 0 rgba(0, 81, 87, .22))
-    drop-shadow(0 8px 1px rgba(0, 45, 49, .44));
+    url(#paper-grain-filter) drop-shadow(0 3px 0 rgba(0, 81, 87, .22)) drop-shadow(0 8px 1px rgba(0, 45, 49, .44));
   transition: filter .25s ease;
 }
 
@@ -529,10 +525,25 @@ input {
   transform: translateX(-50%);
 }
 
-.wave-4 { z-index: 1; bottom: clamp(7.5rem, 14vh, 10rem); }
-.wave-3 { z-index: 2; bottom: clamp(5rem, 10vh, 7rem); }
-.wave-2 { z-index: 3; bottom: clamp(2.25rem, 5vh, 4rem); }
-.wave-1 { z-index: 4; bottom: 0; }
+.wave-4 {
+  z-index: 1;
+  bottom: clamp(7.5rem, 14vh, 10rem);
+}
+
+.wave-3 {
+  z-index: 2;
+  bottom: clamp(5rem, 10vh, 7rem);
+}
+
+.wave-2 {
+  z-index: 3;
+  bottom: clamp(2.25rem, 5vh, 4rem);
+}
+
+.wave-1 {
+  z-index: 4;
+  bottom: 0;
+}
 
 .water-section {
   position: relative;
@@ -541,17 +552,16 @@ input {
 
 .training-section {
   --training-hero-overlap: clamp(14rem, 25vh, 20rem);
-  --training-wave-spill: clamp(5rem, 8vw, 8rem);
+  --training-wave-spill: clamp(2rem, 4vw, 4rem);
+  --training-overlap-fade: clamp(5rem, 8vw, 8rem);
   z-index: 2;
   min-height: 42rem;
   margin-block-start: calc(var(--training-hero-overlap) * -1);
   overflow: visible;
   padding-block: calc(var(--training-hero-overlap) + clamp(3rem, 5vw, 5rem)) 10rem;
-  background: linear-gradient(
-    180deg,
-    transparent 0 var(--training-wave-spill),
-    var(--hero-sky-bottom) var(--training-wave-spill) 100%
-  );
+  background: linear-gradient(180deg,
+      transparent 0 var(--training-overlap-fade),
+      var(--hero-sky-bottom) var(--training-overlap-fade) 100%);
 }
 
 .training-section .section-content {
@@ -565,6 +575,7 @@ input {
   display: flex;
   overflow: hidden;
   flex-direction: column;
+  padding-block-start: 2rem;
   pointer-events: none;
 }
 
@@ -578,30 +589,157 @@ input {
   overflow: visible;
 }
 
-.training-wave-stack + .training-wave-stack {
+.training-wave-stack+.training-wave-stack {
   margin-block-start: clamp(-6.5rem, -10vh, -4.5rem);
 }
 
-.training-wave-stack:nth-child(1) { --training-stack-z: 0; }
-.training-wave-stack:nth-child(2) { --training-stack-z: 4; }
-.training-wave-stack:nth-child(3) { --training-stack-z: 8; }
-.training-wave-stack:nth-child(4) { --training-stack-z: 12; }
-.training-wave-stack:nth-child(5) { --training-stack-z: 16; }
+.training-wave-stack:nth-child(1) {
+  --training-stack-z: 0;
+}
 
-.training-wave-stack .wave-4 { z-index: calc(var(--training-stack-z) + 1); }
-.training-wave-stack .wave-3 { z-index: calc(var(--training-stack-z) + 2); }
-.training-wave-stack .wave-2 { z-index: calc(var(--training-stack-z) + 3); }
-.training-wave-stack .wave-1 { z-index: calc(var(--training-stack-z) + 4); }
+.training-wave-stack:nth-child(2) {
+  --training-stack-z: 4;
+}
+
+.training-wave-stack:nth-child(3) {
+  --training-stack-z: 8;
+}
+
+.training-wave-stack:nth-child(4) {
+  --training-stack-z: 12;
+}
+
+.training-wave-stack:nth-child(5) {
+  --training-stack-z: 16;
+}
+
+.training-wave-stack .wave-layer {
+  width: max(112%, 108rem);
+  filter:
+    saturate(var(--training-wave-saturation, 1)) drop-shadow(0 -2px 0 rgba(255, 255, 255, .42)) drop-shadow(0 -8px 4px rgba(0, 81, 87, .38));
+  transform: translateX(calc(-50% + var(--training-wave-x, 0rem)));
+}
+
+.training-wave-stack:nth-child(1) .wave-4 {
+  --training-wave-saturation: .8;
+}
+
+.training-wave-stack:nth-child(1) .wave-3 {
+  --training-wave-saturation: .92;
+}
+
+.training-wave-stack:nth-child(1) .wave-2 {
+  --training-wave-saturation: 1.08;
+}
+
+.training-wave-stack:nth-child(1) .wave-1 {
+  --training-wave-saturation: 1;
+}
+
+.training-wave-stack:nth-child(2) .wave-4 {
+  --training-wave-x: -3rem;
+  --training-wave-saturation: .88;
+}
+
+.training-wave-stack:nth-child(2) .wave-3 {
+  --training-wave-x: 2rem;
+  --training-wave-saturation: 1.12;
+}
+
+.training-wave-stack:nth-child(2) .wave-2 {
+  --training-wave-x: -1rem;
+  --training-wave-saturation: .96;
+}
+
+.training-wave-stack:nth-child(2) .wave-1 {
+  --training-wave-x: 4rem;
+  --training-wave-saturation: 1.18;
+}
+
+.training-wave-stack:nth-child(3) .wave-4 {
+  --training-wave-x: 3.5rem;
+  --training-wave-saturation: .74;
+}
+
+.training-wave-stack:nth-child(3) .wave-3 {
+  --training-wave-x: -2.5rem;
+  --training-wave-saturation: 1.03;
+}
+
+.training-wave-stack:nth-child(3) .wave-2 {
+  --training-wave-x: 1.5rem;
+  --training-wave-saturation: 1.16;
+}
+
+.training-wave-stack:nth-child(3) .wave-1 {
+  --training-wave-x: -4rem;
+  --training-wave-saturation: .9;
+}
+
+.training-wave-stack:nth-child(4) .wave-4 {
+  --training-wave-x: -1.5rem;
+  --training-wave-saturation: .94;
+}
+
+.training-wave-stack:nth-child(4) .wave-3 {
+  --training-wave-x: 4rem;
+  --training-wave-saturation: .82;
+}
+
+.training-wave-stack:nth-child(4) .wave-2 {
+  --training-wave-x: -3.5rem;
+  --training-wave-saturation: 1.2;
+}
+
+.training-wave-stack:nth-child(4) .wave-1 {
+  --training-wave-x: 2rem;
+  --training-wave-saturation: 1.04;
+}
+
+.training-wave-stack:nth-child(5) .wave-4 {
+  --training-wave-x: 2.5rem;
+  --training-wave-saturation: .84;
+}
+
+.training-wave-stack:nth-child(5) .wave-3 {
+  --training-wave-x: -4rem;
+  --training-wave-saturation: 1.18;
+}
+
+.training-wave-stack:nth-child(5) .wave-2 {
+  --training-wave-x: 3rem;
+  --training-wave-saturation: .9;
+}
+
+.training-wave-stack:nth-child(5) .wave-1 {
+  --training-wave-x: -2rem;
+  --training-wave-saturation: 1.1;
+}
+
+.training-wave-stack .wave-4 {
+  z-index: calc(var(--training-stack-z) + 1);
+}
+
+.training-wave-stack .wave-3 {
+  z-index: calc(var(--training-stack-z) + 2);
+}
+
+.training-wave-stack .wave-2 {
+  z-index: calc(var(--training-stack-z) + 3);
+}
+
+.training-wave-stack .wave-1 {
+  z-index: calc(var(--training-stack-z) + 4);
+}
 
 .training-buoy {
   position: absolute;
   top: clamp(3.5rem, 7vw, 6rem);
   right: clamp(1rem, 7vw, 7rem);
-  z-index: 3;
+  z-index: 6;
   width: clamp(9rem, 13vw, 13rem);
   filter:
-    drop-shadow(0 3px 0 rgba(0, 81, 87, .2))
-    drop-shadow(0 12px 2px rgba(0, 45, 49, .35));
+    drop-shadow(0 3px 0 rgba(0, 81, 87, .2)) drop-shadow(0 12px 2px rgba(0, 45, 49, .35));
   transform-origin: 50% 76%;
   animation: buoy-float 3.6s ease-in-out infinite;
 }
@@ -613,9 +751,9 @@ input {
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 13% 20%, rgba(255,255,255,.42) 0 .25rem, transparent .28rem),
-    radial-gradient(circle at 87% 32%, rgba(255,255,255,.34) 0 .4rem, transparent .43rem),
-    radial-gradient(circle at 74% 76%, rgba(255,255,255,.22) 0 .2rem, transparent .23rem);
+    radial-gradient(circle at 13% 20%, rgba(255, 255, 255, .42) 0 .25rem, transparent .28rem),
+    radial-gradient(circle at 87% 32%, rgba(255, 255, 255, .34) 0 .4rem, transparent .43rem),
+    radial-gradient(circle at 74% 76%, rgba(255, 255, 255, .22) 0 .2rem, transparent .23rem);
   background-size: 15rem 19rem, 21rem 28rem, 17rem 23rem;
   transform: translateY(var(--bubbles-shift));
 }
@@ -859,9 +997,7 @@ input {
   width: min(80%, 23rem);
   margin: 2rem auto 0;
   filter:
-    url(#paper-grain-filter)
-    drop-shadow(0 4px 0 rgba(0, 39, 42, .28))
-    drop-shadow(0 11px 1px rgba(0, 25, 27, .54));
+    url(#paper-grain-filter) drop-shadow(0 4px 0 rgba(0, 39, 42, .28)) drop-shadow(0 11px 1px rgba(0, 25, 27, .54));
 }
 
 .resource-panel {
@@ -899,7 +1035,7 @@ input {
   display: none;
 }
 
-.no-js .tab-content > .tab-pane {
+.no-js .tab-content>.tab-pane {
   display: block;
   margin-block-end: 1rem;
   opacity: 1;
@@ -936,7 +1072,7 @@ input {
   transform: rotate(.35deg);
 }
 
-.teachhit-banner > div {
+.teachhit-banner>div {
   max-width: 48rem;
 }
 
@@ -1029,7 +1165,7 @@ input {
   border-radius: .78rem .78rem 0 0;
 }
 
-.support-category details > div {
+.support-category details>div {
   padding: 1rem;
 }
 
@@ -1077,7 +1213,7 @@ input {
     #e5f1f2;
 }
 
-.media-placeholder > div {
+.media-placeholder>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1154,7 +1290,7 @@ input {
   border-radius: .6rem;
 }
 
-.logo-placeholder > span:first-child {
+.logo-placeholder>span:first-child {
   font-size: 2rem;
 }
 
@@ -1211,8 +1347,7 @@ input {
 }
 
 /* Shared paper grain: one tile for components and one low-cost overlay per scene. */
-:where(
-  .paper-card,
+:where(.paper-card,
   .journey-card,
   .resource-card,
   .support-category,
@@ -1229,8 +1364,7 @@ input {
   .category-icon,
   .media-icon,
   .buoy-icon,
-  .fish
-) {
+  .fish) {
   background-image: url("../svg/paper-texture.svg") !important;
   background-repeat: repeat !important;
   background-size: 180px 180px !important;
@@ -1264,35 +1398,45 @@ input {
 
 .training-section::after {
   z-index: 22;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-wave-spill));
-  mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-wave-spill));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-overlap-fade));
+  mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-overlap-fade));
 }
 
 /* Layered cut-paper depth: short edge shadows plus a focused secondary shadow. */
 .wave-layer {
   filter:
-    drop-shadow(0 -2px 0 rgba(255, 255, 255, .42))
-    drop-shadow(0 -8px 4px rgba(0, 81, 87, .38));
+    drop-shadow(0 -2px 0 rgba(255, 255, 255, .42)) drop-shadow(0 -8px 4px rgba(0, 81, 87, .38));
 }
 
-.wave-back { filter: drop-shadow(0 -5px 1px rgba(0, 81, 87, .25)); }
-.wave-middle { filter: drop-shadow(0 -7px 1px rgba(0, 81, 87, .36)); }
-.wave-front { filter: drop-shadow(0 -9px 1px rgba(0, 61, 66, .48)); }
+.wave-back {
+  filter: drop-shadow(0 -5px 1px rgba(0, 81, 87, .25));
+}
+
+.wave-middle {
+  filter: drop-shadow(0 -7px 1px rgba(0, 81, 87, .36));
+}
+
+.wave-front {
+  filter: drop-shadow(0 -9px 1px rgba(0, 61, 66, .48));
+}
 
 .reef {
   filter:
-    drop-shadow(0 -3px 0 rgba(81, 196, 205, .16))
-    drop-shadow(0 -9px 2px rgba(0, 30, 33, .56));
+    drop-shadow(0 -3px 0 rgba(81, 196, 205, .16)) drop-shadow(0 -9px 2px rgba(0, 30, 33, .56));
   will-change: transform;
 }
 
-.cave-top { filter: drop-shadow(0 10px 2px rgba(0, 0, 0, .64)); }
-.cave-bottom { filter: drop-shadow(0 -10px 2px rgba(0, 0, 0, .6)); }
+.cave-top {
+  filter: drop-shadow(0 10px 2px rgba(0, 0, 0, .64));
+}
+
+.cave-bottom {
+  filter: drop-shadow(0 -10px 2px rgba(0, 0, 0, .6));
+}
 
 .seabed {
   filter:
-    drop-shadow(0 -3px 0 rgba(255, 194, 177, .14))
-    drop-shadow(0 -10px 2px rgba(0, 35, 38, .6));
+    drop-shadow(0 -3px 0 rgba(255, 194, 177, .14)) drop-shadow(0 -10px 2px rgba(0, 35, 38, .6));
 }
 
 .resource-card {
@@ -1324,13 +1468,27 @@ input {
 }
 
 @keyframes cue-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(.45rem); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(.45rem);
+  }
 }
 
 @keyframes buoy-float {
-  0%, 100% { transform: translateY(0) rotate(-1.2deg); }
-  50% { transform: translateY(-.65rem) rotate(1.2deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.2deg);
+  }
+
+  50% {
+    transform: translateY(-.65rem) rotate(1.2deg);
+  }
 }
 
 .back-to-top {
@@ -1491,6 +1649,10 @@ input {
     width: 72rem;
   }
 
+  .training-wave-stack .wave-layer {
+    width: 78rem;
+  }
+
   .journey-nav {
     margin-block-start: 2rem;
   }
@@ -1542,7 +1704,7 @@ input {
     height: auto;
   }
 
-  .media-placeholder > div {
+  .media-placeholder>div {
     padding: 1.25rem;
   }
 
@@ -1583,6 +1745,7 @@ input {
 }
 
 @media (forced-colors: active) {
+
   .paper-card,
   .journey-card,
   .support-category,
