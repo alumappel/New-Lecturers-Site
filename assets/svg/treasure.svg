@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img">
+  <path fill="#003f44" opacity=".45" d="M53 250c83-24 235-19 314 3-70 28-242 31-314-3Z"/>
+  <path fill="#c1564b" d="M87 141h248v112H87z"/>
+  <path fill="#fd8b7d" d="M97 129h248v112H97z"/>
+  <path fill="#8c3b34" d="M97 204h248v37H97z"/>
+  <path fill="#ffc82d" d="M203 191h44v61h-44z"/>
+  <rect x="214" y="207" width="22" height="28" rx="8" fill="#005157"/>
+  <path fill="#c1564b" d="M97 129c4-59 52-102 120-102 67 0 117 41 128 102Z"/>
+  <path fill="#fd8b7d" d="M112 116c13-43 51-72 105-72 52 0 92 28 108 72Z"/>
+  <path fill="#ffc2b1" d="M140 103c17-27 42-41 77-41 34 0 60 13 81 41Z"/>
+  <path fill="#ffc82d" d="M204 29h27v100h-27z"/>
+  <path fill="#005157" d="M96 129h250v18H96z"/>
+  <g fill="#ffc82d"><circle cx="115" cy="82" r="8"/><circle cx="327" cy="66" r="6"/><circle cx="70" cy="116" r="5"/><circle cx="353" cy="105" r="9"/></g>
+  <g fill="#f2f2f3"><path d="m70 58 7 15 16 7-16 7-7 15-7-15-16-7 16-7Z"/><path d="m354 20 5 11 12 5-12 5-5 11-5-11-12-5 12-5Z"/></g>
+</svg>

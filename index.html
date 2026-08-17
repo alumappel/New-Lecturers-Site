@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="he" dir="rtl" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ערכת היכרות מעשית למרצות ולמרצים חדשים ב-HIT: צ׳ק־ליסט, כלים, משאבים וכתובות לתמיכה.">
+  <meta name="theme-color" content="#007377">
+  <title>קופצים למים | קיט למרצות ולמרצים חדשים</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+</head>
+<body>
+  <svg class="svg-filter-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="paper-grain-filter" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.52" numOctaves="4" seed="24" stitchTiles="stitch" result="paperNoise"/>
+        <feColorMatrix in="paperNoise" type="saturate" values="0" result="grayNoise"/>
+        <feComponentTransfer in="grayNoise" result="softNoise">
+          <feFuncA type="table" tableValues="0 0.14"/>
+        </feComponentTransfer>
+        <feComposite in="softNoise" in2="SourceAlpha" operator="in" result="clippedNoise"/>
+        <feBlend in="SourceGraphic" in2="clippedNoise" mode="multiply"/>
+      </filter>
+    </defs>
+  </svg>
+  <a class="skip-link" href="#main-content">דילוג לתוכן הראשי</a>
+
+  <header class="site-header" id="top">
+    <nav class="navbar navbar-expand-lg fixed-top smart-navbar" id="siteNavbar" aria-label="ניווט ראשי">
+      <div class="container">
+        <a class="navbar-brand" href="#top" aria-label="חזרה לראש העמוד">
+          <img class="nav-logo" src="assets/svg/logo-placeholder.svg" alt="מקום ללוגו המרכז לקידום ההוראה">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="פתיחת תפריט הניווט">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#training">מתווה ההכשרה</a></li>
+            <li class="nav-item"><a class="nav-link" href="#checklist">צ’ק־ליסט</a></li>
+            <li class="nav-item"><a class="nav-link" href="#toolbox">ארגז כלים</a></li>
+            <li class="nav-item"><a class="nav-link" href="#support">למי פונים?</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">על המרכז</a></li>
+          </ul>
+          <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#connectedModal">נשארים מחוברים</button>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="sky-layer" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 hero-copy">
+            <h1 id="hero-title">ברוכות וברוכים הבאים!</h1>
+            <p class="lead">רגע לפני שקופצים למים ונכנסים לכיתה, ריכזנו עבורכם את כל המידע, הכלים והמשאבים שיעזרו לכם לפתוח את הסמסטר בצורה הטובה ביותר.</p>
+            <p class="hero-goal"><strong>המטרה:</strong> לחסוך לכם זמן, לעשות סדר בראש ולאפשר לכם להגיע לשיעור הראשון בביטחון מלא.</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-illustration" aria-hidden="true">
+              <img class="springboard" src="assets/svg/springboard.svg" alt="">
+              <img class="diver" src="assets/svg/diver.svg" alt="">
+              <span class="sun"></span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="journey-nav row g-3" aria-label="מה מחכה לכם באתר">
+          <div class="col-md-4">
+            <a class="journey-card" href="#checklist">
+              <span class="journey-icon" aria-hidden="true">✓</span>
+              <span><strong>צ’ק־ליסט</strong><small>כל מה שכדאי להכין לקראת השיעור הראשון</small></span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="journey-card" href="#toolbox">
+              <span class="journey-icon" aria-hidden="true">✦</span>
+              <span><strong>כלים ומשאבים</strong><small>טעימה מהתכנים הפרקטיים ביותר להתחלה</small></span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="journey-card" href="#support">
+              <span class="journey-icon" aria-hidden="true">?</span>
+              <span><strong>למי פונים כש…</strong><small>כתובת ברורה לשאלות טכניות, מנהליות ופדגוגיות</small></span>
+            </a>
+          </div>
+        </nav>
+        <a class="scroll-cue" href="#training"><span class="scroll-cue-icon" aria-hidden="true">↓</span><span class="scroll-cue-text">גללו מטה</span></a>
+      </div>
+      <div class="wave-stack" aria-hidden="true">
+        <img class="wave-layer wave-back" src="assets/svg/wave-back.svg" alt="">
+        <img class="wave-layer wave-middle" src="assets/svg/wave-middle.svg" alt="">
+        <img class="wave-layer wave-front" src="assets/svg/wave-front.svg" alt="">
+      </div>
+    </section>
+  </header>
+
+  <main id="main-content">
+    <section class="training-section water-section" id="training" aria-labelledby="training-title">
+      <div class="bubble-field" aria-hidden="true"></div>
+      <div class="container section-content">
+        <div class="buoy-card paper-card mx-auto">
+          <div class="buoy-icon" aria-hidden="true"><span></span></div>
+          <div>
+            <p class="eyebrow">לאורך שנת ההוראה הראשונה</p>
+            <h2 id="training-title">מתווה הכשרת מרצות ומרצים חדשים</h2>
+            <div class="content-placeholder" role="note" aria-label="תוכן שטרם הושלם">
+              <strong>נדרש להשלמה:</strong> טקסט קצר, כ־80–120 מילים, שיסביר את מתווה הליווי והמפגשים בשנת ההוראה הראשונה ואת הצעד הבא הנדרש מהמרצה.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="checklist-section water-section" id="checklist" aria-labelledby="checklist-title">
+      <div class="container section-content">
+        <header class="print-checklist-header" aria-hidden="true">
+          <div class="print-logo-placeholder">מקום ללוגו המרכז לקידום ההוראה</div>
+          <h2>צ’ק־ליסט לקראת השיעור הראשון</h2>
+        </header>
+        <div class="section-heading text-center mx-auto">
+          <p class="eyebrow light">מתכוננים לפני שצוללים</p>
+          <h2 id="checklist-title">הצ’ק־ליסט לשיעור הראשון</h2>
+          <p>סמנו את מה שכבר השלמתם. ההתקדמות נשמרת במכשיר הזה בלבד, ואפשר לפתוח מידע נוסף לצד כל משימה.</p>
+        </div>
+
+        <div class="progress-panel paper-card" aria-labelledby="progress-title">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <h3 id="progress-title" class="h5 mb-1">ההתקדמות שלי</h3>
+              <p class="mb-0"><strong id="progressText">0 מתוך 15 משימות</strong> הושלמו</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2 no-print">
+              <button class="btn btn-outline-dark" type="button" id="printChecklist">הדפסה / שמירה כ־PDF</button>
+              <button class="btn btn-link text-dark" type="button" id="resetChecklist">איפוס הסימונים</button>
+            </div>
+          </div>
+          <div class="progress mt-3" role="progressbar" aria-label="התקדמות בצ’ק־ליסט" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" id="checklistProgress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <p class="visually-hidden" id="progressAnnouncement" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+        <div class="checklist-groups">
+          <article class="checklist-group paper-card">
+            <div class="group-heading">
+              <span class="group-number" aria-hidden="true">1</span>
+              <div><p class="eyebrow">עולים על הציוד</p><h3>התארגנות טכנית</h3></div>
+            </div>
+            <ul class="task-list">
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-login"><span>לשמור את פרטי ההתחברות ולהתקין אימות דו־שלבי.</span></label><button class="info-button" type="button" data-task-info="tech-login">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-moodle"><span>להיכנס לסביבת הלמידה של הקורס ב־Moodle.</span></label><button class="info-button" type="button" data-task-info="tech-moodle">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-zoom"><span>להתחבר ל־Zoom ולהכיר את הרכיב באתר הקורס.</span></label><button class="info-button" type="button" data-task-info="tech-zoom">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-recording"><span>להתנסות בהפעלת הקלטת שיעור.</span></label><button class="info-button" type="button" data-task-info="tech-recording">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-calendar"><span>לעבור על לוח השנה האקדמי ולסמן מועדים חשובים.</span></label><button class="info-button" type="button" data-task-info="tech-calendar">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-email"><span>להגדיר העברה מהדוא״ל המוסדי, במידת הצורך.</span></label><button class="info-button" type="button" data-task-info="tech-email">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="tech-hybrid"><span>לתאם הדרכה על כיתה היברידית, אם הקורס היברידי.</span></label><button class="info-button" type="button" data-task-info="tech-hybrid">מידע נוסף</button></li>
+            </ul>
+          </article>
+
+          <article class="checklist-group paper-card">
+            <div class="group-heading">
+              <span class="group-number" aria-hidden="true">2</span>
+              <div><p class="eyebrow">מסדרים את הסביבה</p><h3>הכנת הכיתה הפיזית והדיגיטלית</h3></div>
+            </div>
+            <ul class="task-list">
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="class-moodle-content"><span>להעלות ל־Moodle סילבוס, מצגת פתיחה ופרטי קשר.</span></label><button class="info-button" type="button" data-task-info="class-moodle-content">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="class-room"><span>לאתר את הכיתה ולהתנסות בהתחברות למחשב ולציוד.</span></label><button class="info-button" type="button" data-task-info="class-room">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="class-software"><span>לבקש מראש התקנת תוכנות ייעודיות על מחשב הכיתה.</span></label><button class="info-button" type="button" data-task-info="class-software">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="class-contacts"><span>לשמור בנייד את אנשי הקשר החשובים.</span></label><button class="info-button" type="button" data-task-info="class-contacts">מידע נוסף</button></li>
+            </ul>
+          </article>
+
+          <article class="checklist-group paper-card">
+            <div class="group-heading">
+              <span class="group-number" aria-hidden="true">3</span>
+              <div><p class="eyebrow">הרגע שלפני</p><h3>לקראת השיעור הראשון</h3></div>
+            </div>
+            <ul class="task-list">
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="first-expectations"><span>לתכנן את תיאום הציפיות לשיעור הראשון.</span></label><button class="info-button" type="button" data-task-info="first-expectations">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="first-message"><span>לפרסם הודעת פתיחה לסטודנטים באתר הקורס.</span></label><button class="info-button" type="button" data-task-info="first-message">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="first-team"><span>לתאם פגישת היכרות עם שאר צוות הקורס.</span></label><button class="info-button" type="button" data-task-info="first-team">מידע נוסף</button></li>
+              <li><label><input class="form-check-input task-checkbox" type="checkbox" data-task-id="first-center"><span>לקבוע פגישה ראשונה עם המרכז לקידום ההוראה.</span></label><button class="info-button" type="button" data-task-info="first-center">מידע נוסף</button></li>
+            </ul>
+          </article>
+        </div>
+
+        <noscript>
+          <div class="alert alert-warning mt-4">אפשר לקרוא ולהדפיס את הרשימה גם ללא JavaScript, אך שמירת הסימונים והחלונות עם המידע הנוסף דורשים JavaScript פעיל.</div>
+        </noscript>
+      </div>
+      <span class="fish fish-one" aria-hidden="true"></span>
+      <span class="fish fish-two" aria-hidden="true"></span>
+    </section>
+
+    <section class="toolbox-section water-section" id="toolbox" aria-labelledby="toolbox-title">
+      <img class="reef reef-back" src="assets/svg/reef.svg" alt="" aria-hidden="true">
+      <div class="container section-content">
+        <div class="row align-items-end g-4">
+          <div class="col-lg-5">
+            <div class="section-heading light-text">
+              <p class="eyebrow light">שונית של רעיונות</p>
+              <h2 id="toolbox-title">ארגז כלים להוראה</h2>
+              <p>ריכזנו עבורכם טעימה מהכלים והמדריכים הכי פרקטיים לתחילת הדרך — מומלץ להציץ, לשמור במועדפים ולשלוף אותם בדיוק כשצריך.</p>
+            </div>
+            <img class="treasure" src="assets/svg/treasure.svg" alt="" aria-hidden="true">
+          </div>
+          <div class="col-lg-7">
+            <div class="paper-card resource-panel">
+              <ul class="nav nav-pills resource-tabs" id="resourceTabs" role="tablist" aria-label="קטגוריות משאבים">
+                <li class="nav-item" role="presentation"><button class="nav-link active" id="start-tab" data-bs-toggle="pill" data-bs-target="#start-pane" type="button" role="tab" aria-controls="start-pane" aria-selected="true">השיעור הראשון</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="ai-tab" data-bs-toggle="pill" data-bs-target="#ai-pane" type="button" role="tab" aria-controls="ai-pane" aria-selected="false">AI בהוראה</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="ready-tab" data-bs-toggle="pill" data-bs-target="#ready-pane" type="button" role="tab" aria-controls="ready-pane" aria-selected="false">מוכן לכיתה</button></li>
+              </ul>
+              <div class="tab-content mt-4" id="resourceTabContent">
+                <div class="tab-pane fade show active" id="start-pane" role="tabpanel" aria-labelledby="start-tab" tabindex="0">
+                  <article class="resource-card">
+                    <span class="resource-number" aria-hidden="true">01</span>
+                    <div><h3>תיאום ציפיות והשיעור הראשון</h3><p>תוכן שיסייע לבנות פתיחה ברורה ומזמינה, להציג את מבנה הקורס ולנסח כללים משותפים.</p><span class="content-placeholder compact">נדרשים תיאור סופי וקישור לתוכן.</span></div>
+                  </article>
+                </div>
+                <div class="tab-pane fade" id="ai-pane" role="tabpanel" aria-labelledby="ai-tab" tabindex="0">
+                  <article class="resource-card mb-3">
+                    <span class="resource-number" aria-hidden="true">02</span>
+                    <div><h3>מדריך להתאמת קורס לעידן ה־AI</h3><p>מדריך צעד־אחר־צעד לבחינת מטלות, תוצרים ומדיניות הקורס בעידן הבינה המלאכותית.</p><span class="content-placeholder compact">נדרש הקישור הישיר ב־TeachHIT.</span></div>
+                  </article>
+                  <article class="resource-card">
+                    <span class="resource-number" aria-hidden="true">03</span>
+                    <div><h3>BoostHIT</h3><p>כלים מעשיים לשדרוג ההוראה בעזרת כלי ה־AI של Google.</p><span class="content-placeholder compact">נדרש הקישור הישיר ב־TeachHIT.</span></div>
+                  </article>
+                </div>
+                <div class="tab-pane fade" id="ready-pane" role="tabpanel" aria-labelledby="ready-tab" tabindex="0">
+                  <article class="resource-card">
+                    <span class="resource-number" aria-hidden="true">04</span>
+                    <div><h3>מעבר לפרומפט</h3><p>תוכן מוכן להכשרת מרצים וסטודנטים לעבודה מושכלת עם כלי בינה מלאכותית.</p><span class="content-placeholder compact">נדרשים תיאור סופי וקישור לתוכן.</span></div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="teachhit-banner paper-card" aria-labelledby="teachhit-title">
+          <div>
+            <p class="eyebrow">רוצים לצלול עמוק יותר?</p>
+            <h3 id="teachhit-title">כל התכנים מחכים לכם ב־TeachHIT</h3>
+            <p>מגוון רחב של מדריכים, חומרי העשרה ותכנים שאפשר לשלב ישירות בקורס מחכים לכם בסביבת הלמידה של המרכז. הסביבה מתעדכנת כל הזמן, אז שווה לחזור ולעקוב.</p>
+          </div>
+          <span class="btn btn-primary disabled-link" aria-disabled="true">קישור ל־TeachHIT יתווסף</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="support-section" id="support" aria-labelledby="support-title">
+      <img class="cave-edge cave-top" src="assets/svg/cave-top.svg" alt="" aria-hidden="true">
+      <img class="cave-edge cave-bottom" src="assets/svg/cave-bottom.svg" alt="" aria-hidden="true">
+      <div class="container section-content">
+        <div class="section-heading text-center light-text mx-auto">
+          <p class="eyebrow light">גם בחושך יש כיוון</p>
+          <h2 id="support-title">למי פונים כש…</h2>
+          <p>לפעמים הדרך קצת פחות ברורה, וזה בסדר גמור. ריכזנו כאן כתובות שיעזרו לפתור כל בעיה — מסיוע טכני ומנהלי ועד ייעוץ פדגוגי. פתחו את הסיטואציה המתאימה כדי לראות למי כדאי לפנות.</p>
+        </div>
+
+        <div class="row g-4 support-groups">
+          <div class="col-lg-4">
+            <section class="support-category" aria-labelledby="technical-title">
+              <span class="category-icon" aria-hidden="true">⚙</span>
+              <h3 id="technical-title">תמיכה טכנית</h3>
+              <details><summary>צריך/ה עזרה בהתחברות ל־Moodle?</summary><div><strong>למי פונים:</strong> מוקד המחשוב.<span class="content-placeholder compact">נדרשים טלפון, דוא״ל וקישור.</span></div></details>
+              <details><summary>צריך/ה סיוע בהעלאת תכנים לאתר הקורס?</summary><div><strong>למי פונים:</strong> תמיכת Moodle.<span class="content-placeholder compact">נדרשים שם ופרטי קשר מאושרים.</span></div></details>
+              <details><summary>צריך/ה הדרכה על Zoom או על הקלטות?</summary><div><strong>למי פונים:</strong> תמיכת Moodle/Zoom.<span class="content-placeholder compact">נדרשים שם, פרטי קשר וקישור למדריך.</span></div></details>
+              <details><summary>יש תקלה בציוד הכיתה בזמן שיעור?</summary><div><strong>למי פונים:</strong> מוקד המחשוב או המוקד האור־קולי.<span class="content-placeholder compact">נדרשים מספרי הטלפון.</span></div></details>
+              <details><summary>לא מצליח/ה להתחבר למערכות המכון?</summary><div><strong>למי פונים:</strong> מוקד המחשוב.<span class="content-placeholder compact">נדרשים פרטי קשר וקישור לאיפוס סיסמה.</span></div></details>
+            </section>
+          </div>
+
+          <div class="col-lg-4">
+            <section class="support-category" aria-labelledby="admin-title">
+              <span class="category-icon" aria-hidden="true">⌂</span>
+              <h3 id="admin-title">נושאים מנהליים</h3>
+              <details><summary>צריך/ה לברר באילו קורסים וכיתות מלמדים?</summary><div><strong>למי פונים:</strong> מזכירות המחלקה.<span class="content-placeholder compact">נדרשת הפניה לרשימת המזכירויות.</span></div></details>
+              <details><summary>מחפש/ת את לוח השנה האקדמי?</summary><div><strong>למי פונים:</strong> עמוד לוח השנה האקדמי; המינהל האקדמי לשאלות.<span class="content-placeholder compact">נדרש קישור לעמוד.</span></div></details>
+              <details><summary>מתעוררת שאלה על שכר או חוזה העסקה?</summary><div><strong>למי פונים:</strong> הגורם המנהלי שיוגדר על ידי HIT.<span class="content-placeholder compact">נדרשים שם ותפקיד מאושרים.</span></div></details>
+              <details><summary>צריך/ה לתת התאמות מיוחדות לסטודנטים?</summary><div><strong>למי פונים:</strong> דקאנט הסטודנטים.<span class="content-placeholder compact">נדרשים קישור ופרטי קשר.</span></div></details>
+              <details><summary>אני חולה ביום השיעור — מה עושים?</summary><div><strong>למי פונים:</strong> מזכירות המחלקה, בהתאם לנוהל המכון.<span class="content-placeholder compact">נדרש קישור לנוהל, אם קיים.</span></div></details>
+            </section>
+          </div>
+
+          <div class="col-lg-4">
+            <section class="support-category" aria-labelledby="pedagogy-title">
+              <span class="category-icon" aria-hidden="true">✦</span>
+              <h3 id="pedagogy-title">הוראה וליווי פדגוגי</h3>
+              <details><summary>רוצה לתאם פגישה ראשונה עם המרכז?</summary><div><strong>למי פונים:</strong> המרכז לקידום ההוראה.<span class="content-placeholder compact">נדרש קישור לטופס התיאום.</span></div></details>
+              <details><summary>רוצה להתאים קורס לפורמט היברידי?</summary><div><strong>למי פונים:</strong> מוקד המחשוב להדרכה טכנית; המרכז לקידום ההוראה לחשיבה פדגוגית.<span class="content-placeholder compact">נדרשים קישור ופרטי קשר.</span></div></details>
+              <details><summary>מחפש/ת דרכים לרתק את הסטודנטים?</summary><div><strong>למי פונים:</strong> ייעוץ במרכז לקידום ההוראה.<span class="content-placeholder compact">נדרש קישור לתיאום.</span></div></details>
+              <details><summary>יוצאים משיעור מאתגר ורוצים לחשוב יחד?</summary><div><strong>למי פונים:</strong> אנחנו כאן כדי להקשיב ולחשוב יחד — המרכז לקידום ההוראה.<span class="content-placeholder compact">נדרשים פרטי פנייה.</span></div></details>
+              <details><summary>רוצה להבין את תהליך ההכשרה בשנה הראשונה?</summary><div><strong>למי פונים:</strong> המרכז לקידום ההוראה.<span class="content-placeholder compact">נדרשים תיאור המתווה וקישור רלוונטי.</span></div></details>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section water-section" id="about" aria-labelledby="about-title">
+      <div class="container section-content">
+        <div class="paper-card about-card">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <p class="eyebrow">הגעתם לקרקע בטוחה</p>
+              <h2 id="about-title">קצת עלינו</h2>
+              <p>המרכז לקידום ההוראה הוא גוף מקצועי התומך בסגל האקדמי ומסייע בשמירה ובקידום איכות ההוראה, תוך דגש על תפיסות חדשניות ושילוב כלים טכנולוגיים המקדמים למידה משמעותית ועדכנית.</p>
+              <p><strong>אנו מציעים מעטפת ליווי פדגוגית הכוללת:</strong></p>
+              <ul class="service-list">
+                <li>שילוב מיטבי של בינה מלאכותית בהוראה.</li>
+                <li>פיתוח חומרי למידה אינטראקטיביים.</li>
+                <li>אימוץ פרקטיקות מתקדמות להעשרת העבודה בכיתה ובמרחבים הדיגיטליים.</li>
+              </ul>
+              <p>נשמע מעניין? למידע נוסף, לחשיבה משותפת ולקבלת ליווי אישי — פנו אלינו, ונשמח לסייע.</p>
+              <span class="btn btn-primary disabled-link" aria-disabled="true">טופס תיאום פגישה יתווסף</span>
+            </div>
+            <div class="col-lg-6">
+              <div class="media-placeholder ratio ratio-16x9" role="img" aria-label="מקום לסרטון היכרות עם המרכז לקידום ההוראה">
+                <div>
+                  <span class="media-icon" aria-hidden="true">▶</span>
+                  <strong>Placeholder לסרטון: “מי אנחנו?”</strong>
+                  <p>יש להטמיע כאן סרטון YouTube של המרכז ביחס 16:9, עם כותרת נגישה, כתוביות ותמלול.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="connected-banner" id="stay-connected" aria-labelledby="connected-section-title">
+          <div>
+            <p class="eyebrow">המסע רק מתחיל</p>
+            <h2 id="connected-section-title">נשארים מחוברים ומעודכנים</h2>
+            <p>הצטרפו לערוצים של המרכז וקבלו כלים, מדריכים ועדכונים שיעזרו לאורך הדרך.</p>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="btn btn-dark disabled-link" aria-disabled="true">קישור לקבוצת WhatsApp יתווסף</span>
+            <span class="btn btn-outline-dark disabled-link" aria-disabled="true">קישור ל־TeachHIT יתווסף</span>
+          </div>
+        </aside>
+      </div>
+      <img class="seabed" src="assets/svg/seabed.svg" alt="" aria-hidden="true">
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+      <div class="logo-placeholder" role="img" aria-label="מקום ללוגו הרשמי של HIT">
+        <span aria-hidden="true">▧</span>
+        <span><strong>לוגו HIT</strong><small>נדרש קובץ לוגו רשמי</small></span>
+      </div>
+      <nav aria-label="קישורים בתחתית האתר">
+        <ul class="footer-links">
+          <li><span aria-disabled="true">אתר המרכז — קישור יתווסף</span></li>
+          <li><span aria-disabled="true">TeachHIT — קישור יתווסף</span></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <a class="back-to-top" id="backToTop" href="#top" aria-label="חזרה לראש העמוד">
+    <span aria-hidden="true">↑</span>
+  </a>
+
+  <div class="modal fade" id="connectedModal" tabindex="-1" aria-labelledby="connected-title" aria-describedby="connected-description" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content connected-modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h4" id="connected-title">נשארים מחוברים ומעודכנים</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירת החלון"></button>
+        </div>
+        <div class="modal-body" id="connected-description">
+          <p class="eyebrow">המסע רק מתחיל</p>
+          <p>הצטרפו לערוצים של המרכז וקבלו כלים, מדריכים ועדכונים שיעזרו לאורך הדרך.</p>
+          <div class="d-grid gap-3 mt-4">
+            <span class="btn btn-dark disabled-link" aria-disabled="true">קישור לקבוצת WhatsApp יתווסף</span>
+            <span class="btn btn-outline-dark disabled-link" aria-disabled="true">קישור ל־TeachHIT יתווסף</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="taskInfoModal" tabindex="-1" aria-labelledby="taskInfoTitle" aria-describedby="taskInfoDescription" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h4" id="taskInfoTitle">מידע נוסף</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירת החלון"></button>
+        </div>
+        <div class="modal-body" id="taskInfoDescription">
+          <h3 class="h6">מה עושים?</h3>
+          <p id="taskAction"></p>
+          <h3 class="h6">למי פונים?</h3>
+          <p id="taskContact"></p>
+          <div class="content-placeholder" id="taskMissing"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">הבנתי, תודה</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

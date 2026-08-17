@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 72" role="img" aria-labelledby="title desc">
+  <title id="title">מקום ללוגו המרכז לקידום ההוראה</title>
+  <desc id="desc">מסגרת זמנית שתוחלף בקובץ הלוגו הרשמי</desc>
+  <rect x="2" y="2" width="226" height="68" rx="12" fill="#f2f2f3" stroke="#005157" stroke-width="3" stroke-dasharray="8 6"/>
+  <rect x="17" y="16" width="44" height="40" rx="7" fill="#dce9ea" stroke="#007377" stroke-width="2"/>
+  <circle cx="48" cy="27" r="5" fill="#ffc82d"/>
+  <path d="m22 50 12-13 8 8 7-6 8 11Z" fill="#51c4cd"/>
+  <path d="M75 27h132M75 43h103" stroke="#005157" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+</svg>
