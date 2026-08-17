@@ -15,6 +15,7 @@
   --coral: #fd8b7d;
   --coral-light: #ffc2b1;
   --coral-dark: #c1564b;
+  --hero-sky-bottom: #b8e5e8;
   --paper: #f2f2f3;
   --mist: #b9c9cc;
   --ink: #102f31;
@@ -321,10 +322,10 @@ input {
 .hero {
   position: relative;
   min-height: max(100svh, 52rem);
-  padding-block: 9rem 18rem;
-  isolation: isolate;
+  padding-block: 9rem 20rem;
+  isolation: auto;
   overflow: hidden;
-  background: linear-gradient(180deg, #effcfd 0%, #d7f2f4 57%, #b8e5e8 100%);
+  background: linear-gradient(180deg, #effcfd 0%, #d7f2f4 57%, var(--hero-sky-bottom) 100%);
 }
 
 .sky-layer {
@@ -539,11 +540,72 @@ input {
 }
 
 .training-section {
-  padding-block: 8rem;
-  background: linear-gradient(180deg, var(--shallow), #32aeb8);
+  --training-hero-overlap: clamp(14rem, 25vh, 20rem);
+  --training-wave-spill: clamp(5rem, 8vw, 8rem);
+  z-index: 2;
+  min-height: 42rem;
+  margin-block-start: calc(var(--training-hero-overlap) * -1);
+  overflow: visible;
+  padding-block: calc(var(--training-hero-overlap) + clamp(3rem, 5vw, 5rem)) 10rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0 var(--training-wave-spill),
+    var(--hero-sky-bottom) var(--training-wave-spill) 100%
+  );
 }
 
-.training-section::before,
+.training-section .section-content {
+  z-index: 24;
+}
+
+.training-wave-repeat {
+  position: absolute;
+  inset-block: calc(var(--training-wave-spill) * -1) 0;
+  inset-inline: 0;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.training-wave-stack {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  flex: 0 0 clamp(16rem, 34svh, 21rem);
+  width: 100%;
+  height: clamp(16rem, 34svh, 21rem);
+  overflow: visible;
+}
+
+.training-wave-stack + .training-wave-stack {
+  margin-block-start: clamp(-6.5rem, -10vh, -4.5rem);
+}
+
+.training-wave-stack:nth-child(1) { --training-stack-z: 0; }
+.training-wave-stack:nth-child(2) { --training-stack-z: 4; }
+.training-wave-stack:nth-child(3) { --training-stack-z: 8; }
+.training-wave-stack:nth-child(4) { --training-stack-z: 12; }
+.training-wave-stack:nth-child(5) { --training-stack-z: 16; }
+
+.training-wave-stack .wave-4 { z-index: calc(var(--training-stack-z) + 1); }
+.training-wave-stack .wave-3 { z-index: calc(var(--training-stack-z) + 2); }
+.training-wave-stack .wave-2 { z-index: calc(var(--training-stack-z) + 3); }
+.training-wave-stack .wave-1 { z-index: calc(var(--training-stack-z) + 4); }
+
+.training-buoy {
+  position: absolute;
+  top: clamp(3.5rem, 7vw, 6rem);
+  right: clamp(1rem, 7vw, 7rem);
+  z-index: 3;
+  width: clamp(9rem, 13vw, 13rem);
+  filter:
+    drop-shadow(0 3px 0 rgba(0, 81, 87, .2))
+    drop-shadow(0 12px 2px rgba(0, 45, 49, .35));
+  transform-origin: 50% 76%;
+  animation: buoy-float 3.6s ease-in-out infinite;
+}
+
 .checklist-section::before,
 .toolbox-section::before {
   content: "";
@@ -561,6 +623,7 @@ input {
 .buoy-card {
   display: flex;
   max-width: 58rem;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
   align-items: center;
   gap: 2rem;
   padding: clamp(1.5rem, 4vw, 3rem);
@@ -1199,6 +1262,12 @@ input {
   z-index: 1;
 }
 
+.training-section::after {
+  z-index: 22;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-wave-spill));
+  mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-wave-spill));
+}
+
 /* Layered cut-paper depth: short edge shadows plus a focused secondary shadow. */
 .wave-layer {
   filter:
@@ -1257,6 +1326,11 @@ input {
 @keyframes cue-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(.45rem); }
+}
+
+@keyframes buoy-float {
+  0%, 100% { transform: translateY(0) rotate(-1.2deg); }
+  50% { transform: translateY(-.65rem) rotate(1.2deg); }
 }
 
 .back-to-top {
@@ -1379,7 +1453,7 @@ input {
 
   .hero {
     min-height: 58rem;
-    padding-block-end: 19rem;
+    padding-block-end: 21rem;
   }
 
   .springboard {
@@ -1440,6 +1514,10 @@ input {
     padding-block-start: 6rem;
   }
 
+  .training-section {
+    padding-block-start: calc(var(--training-hero-overlap) + 3rem);
+  }
+
   .task-list li {
     align-items: stretch;
     flex-direction: column;
@@ -1490,12 +1568,17 @@ input {
 
   .sky-layer,
   .diver,
+  .training-buoy,
   .fish,
   .reef,
   .training-section::before,
   .checklist-section::before,
   .toolbox-section::before {
     transform: none !important;
+  }
+
+  .training-buoy {
+    animation: none !important;
   }
 }
 
