@@ -1383,44 +1383,310 @@ input {
   animation: bioluminescent-twinkle var(--glow-duration, 8s) ease-in-out var(--glow-delay, 0s) infinite alternate;
 }
 
-.bioluminescent-field span:nth-child(1)  { --glow-x: 6%;  --glow-y: 14%; --glow-size: .2rem;  --glow-duration: 7.3s; --glow-delay: -2.1s; }
-.bioluminescent-field span:nth-child(2)  { --glow-x: 17%; --glow-y: 41%; --glow-size: .27rem; --glow-duration: 9.1s; --glow-delay: -6.4s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(3)  { --glow-x: 27%; --glow-y: 19%; --glow-size: .17rem; --glow-duration: 6.8s; --glow-delay: -3.7s; }
-.bioluminescent-field span:nth-child(4)  { --glow-x: 38%; --glow-y: 73%; --glow-size: .23rem; --glow-duration: 10.2s; --glow-delay: -8.5s; --glow-color: var(--coral-light); }
-.bioluminescent-field span:nth-child(5)  { --glow-x: 46%; --glow-y: 31%; --glow-size: .19rem; --glow-duration: 8.4s; --glow-delay: -1.6s; }
-.bioluminescent-field span:nth-child(6)  { --glow-x: 57%; --glow-y: 9%;  --glow-size: .28rem; --glow-duration: 11.3s; --glow-delay: -7.2s; }
-.bioluminescent-field span:nth-child(7)  { --glow-x: 69%; --glow-y: 52%; --glow-size: .18rem; --glow-duration: 7.7s; --glow-delay: -4.9s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(8)  { --glow-x: 82%; --glow-y: 24%; --glow-size: .24rem; --glow-duration: 9.8s; --glow-delay: -2.8s; }
-.bioluminescent-field span:nth-child(9)  { --glow-x: 94%; --glow-y: 63%; --glow-size: .2rem;  --glow-duration: 6.9s; --glow-delay: -5.5s; --glow-color: var(--coral-light); }
-.bioluminescent-field span:nth-child(10) { --glow-x: 11%; --glow-y: 82%; --glow-size: .26rem; --glow-duration: 10.7s; --glow-delay: -9.1s; }
-.bioluminescent-field span:nth-child(11) { --glow-x: 23%; --glow-y: 58%; --glow-size: .16rem; --glow-duration: 8.1s; --glow-delay: -3.2s; }
-.bioluminescent-field span:nth-child(12) { --glow-x: 34%; --glow-y: 92%; --glow-size: .22rem; --glow-duration: 7.5s; --glow-delay: -6.7s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(13) { --glow-x: 51%; --glow-y: 61%; --glow-size: .3rem;  --glow-duration: 11.8s; --glow-delay: -4.2s; }
-.bioluminescent-field span:nth-child(14) { --glow-x: 63%; --glow-y: 87%; --glow-size: .17rem; --glow-duration: 7.1s; --glow-delay: -1.9s; --glow-color: var(--coral-light); }
-.bioluminescent-field span:nth-child(15) { --glow-x: 74%; --glow-y: 36%; --glow-size: .23rem; --glow-duration: 9.4s; --glow-delay: -7.8s; }
-.bioluminescent-field span:nth-child(16) { --glow-x: 86%; --glow-y: 78%; --glow-size: .27rem; --glow-duration: 10.9s; --glow-delay: -5.1s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(17) { --glow-x: 97%; --glow-y: 17%; --glow-size: .18rem; --glow-duration: 6.6s; --glow-delay: -3.4s; }
-.bioluminescent-field span:nth-child(18) { --glow-x: 43%; --glow-y: 47%; --glow-size: .2rem;  --glow-duration: 8.9s; --glow-delay: -6.1s; }
-.bioluminescent-field span:nth-child(19) { --glow-x: 3%;  --glow-y: 35%; --glow-size: .18rem; --glow-duration: 9.6s; --glow-delay: -7.3s; }
-.bioluminescent-field span:nth-child(20) { --glow-x: 9%;  --glow-y: 69%; --glow-size: .25rem; --glow-duration: 7.8s; --glow-delay: -2.6s; --glow-color: var(--coral-light); }
-.bioluminescent-field span:nth-child(21) { --glow-x: 14%; --glow-y: 27%; --glow-size: .17rem; --glow-duration: 10.4s; --glow-delay: -8.2s; }
-.bioluminescent-field span:nth-child(22) { --glow-x: 20%; --glow-y: 89%; --glow-size: .21rem; --glow-duration: 6.7s; --glow-delay: -4.4s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(23) { --glow-x: 31%; --glow-y: 12%; --glow-size: .28rem; --glow-duration: 11.5s; --glow-delay: -5.8s; }
-.bioluminescent-field span:nth-child(24) { --glow-x: 35%; --glow-y: 54%; --glow-size: .19rem; --glow-duration: 8.3s; --glow-delay: -1.7s; }
-.bioluminescent-field span:nth-child(25) { --glow-x: 41%; --glow-y: 84%; --glow-size: .24rem; --glow-duration: 9.9s; --glow-delay: -7.6s; --glow-color: var(--coral-light); }
-.bioluminescent-field span:nth-child(26) { --glow-x: 48%; --glow-y: 21%; --glow-size: .16rem; --glow-duration: 7.2s; --glow-delay: -3.1s; }
-.bioluminescent-field span:nth-child(27) { --glow-x: 55%; --glow-y: 76%; --glow-size: .29rem; --glow-duration: 10.8s; --glow-delay: -9.2s; }
-.bioluminescent-field span:nth-child(28) { --glow-x: 61%; --glow-y: 39%; --glow-size: .2rem;  --glow-duration: 8.6s; --glow-delay: -4.7s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(29) { --glow-x: 66%; --glow-y: 17%; --glow-size: .23rem; --glow-duration: 6.9s; --glow-delay: -2.2s; }
-.bioluminescent-field span:nth-child(30) { --glow-x: 72%; --glow-y: 90%; --glow-size: .18rem; --glow-duration: 9.3s; --glow-delay: -6.5s; }
-.bioluminescent-field span:nth-child(31) { --glow-x: 78%; --glow-y: 68%; --glow-size: .26rem; --glow-duration: 11.1s; --glow-delay: -8.7s; --glow-color: var(--coral-light); }
-.bioluminescent-field span:nth-child(32) { --glow-x: 84%; --glow-y: 11%; --glow-size: .17rem; --glow-duration: 7.6s; --glow-delay: -3.9s; }
-.bioluminescent-field span:nth-child(33) { --glow-x: 89%; --glow-y: 46%; --glow-size: .22rem; --glow-duration: 10.1s; --glow-delay: -5.3s; --glow-color: var(--yellow); }
-.bioluminescent-field span:nth-child(34) { --glow-x: 92%; --glow-y: 86%; --glow-size: .27rem; --glow-duration: 8.8s; --glow-delay: -7.1s; }
-.bioluminescent-field span:nth-child(35) { --glow-x: 98%; --glow-y: 33%; --glow-size: .19rem; --glow-duration: 6.5s; --glow-delay: -1.4s; }
-.bioluminescent-field span:nth-child(36) { --glow-x: 25%; --glow-y: 78%; --glow-size: .24rem; --glow-duration: 9.7s; --glow-delay: -6.8s; --glow-color: var(--coral-light); }
+.bioluminescent-field span:nth-child(1) {
+  --glow-x: 6%;
+  --glow-y: 14%;
+  --glow-size: .2rem;
+  --glow-duration: 7.3s;
+  --glow-delay: -2.1s;
+}
+
+.bioluminescent-field span:nth-child(2) {
+  --glow-x: 17%;
+  --glow-y: 41%;
+  --glow-size: .27rem;
+  --glow-duration: 9.1s;
+  --glow-delay: -6.4s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(3) {
+  --glow-x: 27%;
+  --glow-y: 19%;
+  --glow-size: .17rem;
+  --glow-duration: 6.8s;
+  --glow-delay: -3.7s;
+}
+
+.bioluminescent-field span:nth-child(4) {
+  --glow-x: 38%;
+  --glow-y: 73%;
+  --glow-size: .23rem;
+  --glow-duration: 10.2s;
+  --glow-delay: -8.5s;
+  --glow-color: var(--coral-light);
+}
+
+.bioluminescent-field span:nth-child(5) {
+  --glow-x: 46%;
+  --glow-y: 31%;
+  --glow-size: .19rem;
+  --glow-duration: 8.4s;
+  --glow-delay: -1.6s;
+}
+
+.bioluminescent-field span:nth-child(6) {
+  --glow-x: 57%;
+  --glow-y: 9%;
+  --glow-size: .28rem;
+  --glow-duration: 11.3s;
+  --glow-delay: -7.2s;
+}
+
+.bioluminescent-field span:nth-child(7) {
+  --glow-x: 69%;
+  --glow-y: 52%;
+  --glow-size: .18rem;
+  --glow-duration: 7.7s;
+  --glow-delay: -4.9s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(8) {
+  --glow-x: 82%;
+  --glow-y: 24%;
+  --glow-size: .24rem;
+  --glow-duration: 9.8s;
+  --glow-delay: -2.8s;
+}
+
+.bioluminescent-field span:nth-child(9) {
+  --glow-x: 94%;
+  --glow-y: 63%;
+  --glow-size: .2rem;
+  --glow-duration: 6.9s;
+  --glow-delay: -5.5s;
+  --glow-color: var(--coral-light);
+}
+
+.bioluminescent-field span:nth-child(10) {
+  --glow-x: 11%;
+  --glow-y: 82%;
+  --glow-size: .26rem;
+  --glow-duration: 10.7s;
+  --glow-delay: -9.1s;
+}
+
+.bioluminescent-field span:nth-child(11) {
+  --glow-x: 23%;
+  --glow-y: 58%;
+  --glow-size: .16rem;
+  --glow-duration: 8.1s;
+  --glow-delay: -3.2s;
+}
+
+.bioluminescent-field span:nth-child(12) {
+  --glow-x: 34%;
+  --glow-y: 92%;
+  --glow-size: .22rem;
+  --glow-duration: 7.5s;
+  --glow-delay: -6.7s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(13) {
+  --glow-x: 51%;
+  --glow-y: 61%;
+  --glow-size: .3rem;
+  --glow-duration: 11.8s;
+  --glow-delay: -4.2s;
+}
+
+.bioluminescent-field span:nth-child(14) {
+  --glow-x: 63%;
+  --glow-y: 87%;
+  --glow-size: .17rem;
+  --glow-duration: 7.1s;
+  --glow-delay: -1.9s;
+  --glow-color: var(--coral-light);
+}
+
+.bioluminescent-field span:nth-child(15) {
+  --glow-x: 74%;
+  --glow-y: 36%;
+  --glow-size: .23rem;
+  --glow-duration: 9.4s;
+  --glow-delay: -7.8s;
+}
+
+.bioluminescent-field span:nth-child(16) {
+  --glow-x: 86%;
+  --glow-y: 78%;
+  --glow-size: .27rem;
+  --glow-duration: 10.9s;
+  --glow-delay: -5.1s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(17) {
+  --glow-x: 97%;
+  --glow-y: 17%;
+  --glow-size: .18rem;
+  --glow-duration: 6.6s;
+  --glow-delay: -3.4s;
+}
+
+.bioluminescent-field span:nth-child(18) {
+  --glow-x: 43%;
+  --glow-y: 47%;
+  --glow-size: .2rem;
+  --glow-duration: 8.9s;
+  --glow-delay: -6.1s;
+}
+
+.bioluminescent-field span:nth-child(19) {
+  --glow-x: 3%;
+  --glow-y: 35%;
+  --glow-size: .18rem;
+  --glow-duration: 9.6s;
+  --glow-delay: -7.3s;
+}
+
+.bioluminescent-field span:nth-child(20) {
+  --glow-x: 9%;
+  --glow-y: 69%;
+  --glow-size: .25rem;
+  --glow-duration: 7.8s;
+  --glow-delay: -2.6s;
+  --glow-color: var(--coral-light);
+}
+
+.bioluminescent-field span:nth-child(21) {
+  --glow-x: 14%;
+  --glow-y: 27%;
+  --glow-size: .17rem;
+  --glow-duration: 10.4s;
+  --glow-delay: -8.2s;
+}
+
+.bioluminescent-field span:nth-child(22) {
+  --glow-x: 20%;
+  --glow-y: 89%;
+  --glow-size: .21rem;
+  --glow-duration: 6.7s;
+  --glow-delay: -4.4s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(23) {
+  --glow-x: 31%;
+  --glow-y: 12%;
+  --glow-size: .28rem;
+  --glow-duration: 11.5s;
+  --glow-delay: -5.8s;
+}
+
+.bioluminescent-field span:nth-child(24) {
+  --glow-x: 35%;
+  --glow-y: 54%;
+  --glow-size: .19rem;
+  --glow-duration: 8.3s;
+  --glow-delay: -1.7s;
+}
+
+.bioluminescent-field span:nth-child(25) {
+  --glow-x: 41%;
+  --glow-y: 84%;
+  --glow-size: .24rem;
+  --glow-duration: 9.9s;
+  --glow-delay: -7.6s;
+  --glow-color: var(--coral-light);
+}
+
+.bioluminescent-field span:nth-child(26) {
+  --glow-x: 48%;
+  --glow-y: 21%;
+  --glow-size: .16rem;
+  --glow-duration: 7.2s;
+  --glow-delay: -3.1s;
+}
+
+.bioluminescent-field span:nth-child(27) {
+  --glow-x: 55%;
+  --glow-y: 76%;
+  --glow-size: .29rem;
+  --glow-duration: 10.8s;
+  --glow-delay: -9.2s;
+}
+
+.bioluminescent-field span:nth-child(28) {
+  --glow-x: 61%;
+  --glow-y: 39%;
+  --glow-size: .2rem;
+  --glow-duration: 8.6s;
+  --glow-delay: -4.7s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(29) {
+  --glow-x: 66%;
+  --glow-y: 17%;
+  --glow-size: .23rem;
+  --glow-duration: 6.9s;
+  --glow-delay: -2.2s;
+}
+
+.bioluminescent-field span:nth-child(30) {
+  --glow-x: 72%;
+  --glow-y: 90%;
+  --glow-size: .18rem;
+  --glow-duration: 9.3s;
+  --glow-delay: -6.5s;
+}
+
+.bioluminescent-field span:nth-child(31) {
+  --glow-x: 78%;
+  --glow-y: 68%;
+  --glow-size: .26rem;
+  --glow-duration: 11.1s;
+  --glow-delay: -8.7s;
+  --glow-color: var(--coral-light);
+}
+
+.bioluminescent-field span:nth-child(32) {
+  --glow-x: 84%;
+  --glow-y: 11%;
+  --glow-size: .17rem;
+  --glow-duration: 7.6s;
+  --glow-delay: -3.9s;
+}
+
+.bioluminescent-field span:nth-child(33) {
+  --glow-x: 89%;
+  --glow-y: 46%;
+  --glow-size: .22rem;
+  --glow-duration: 10.1s;
+  --glow-delay: -5.3s;
+  --glow-color: var(--yellow);
+}
+
+.bioluminescent-field span:nth-child(34) {
+  --glow-x: 92%;
+  --glow-y: 86%;
+  --glow-size: .27rem;
+  --glow-duration: 8.8s;
+  --glow-delay: -7.1s;
+}
+
+.bioluminescent-field span:nth-child(35) {
+  --glow-x: 98%;
+  --glow-y: 33%;
+  --glow-size: .19rem;
+  --glow-duration: 6.5s;
+  --glow-delay: -1.4s;
+}
+
+.bioluminescent-field span:nth-child(36) {
+  --glow-x: 25%;
+  --glow-y: 78%;
+  --glow-size: .24rem;
+  --glow-duration: 9.7s;
+  --glow-delay: -6.8s;
+  --glow-color: var(--coral-light);
+}
 
 @keyframes bioluminescent-twinkle {
+
   0%,
   18% {
     opacity: .12;
@@ -1471,20 +1737,94 @@ input {
   height: auto;
   opacity: .4;
   filter:
-    drop-shadow(0 0 .3rem rgba(81, 196, 205, .34))
-    drop-shadow(0 0 .75rem rgba(81, 196, 205, .18));
+    drop-shadow(0 0 .3rem rgba(81, 196, 205, .34)) drop-shadow(0 0 .75rem rgba(81, 196, 205, .18));
   animation: fluorescent-creature-drift var(--creature-duration, 11s) ease-in-out var(--creature-delay, 0s) infinite alternate;
 }
 
-.fluorescent-creatures img:nth-child(1) { --creature-x: 8%;  --creature-y: 26%; --creature-size: clamp(2.4rem, 3vw, 3.6rem); --creature-rotate: -12deg; --creature-duration: 10.2s; --creature-delay: -3.1s; }
-.fluorescent-creatures img:nth-child(2) { --creature-x: 76%; --creature-y: 17%; --creature-size: clamp(3rem, 4vw, 4.8rem);   --creature-rotate: 8deg;   --creature-duration: 12.4s; --creature-delay: -8.2s; --creature-flip: -1; }
-.fluorescent-creatures img:nth-child(3) { --creature-x: 45%; --creature-y: 34%; --creature-size: clamp(2.3rem, 3vw, 3.5rem); --creature-rotate: 16deg;  --creature-duration: 9.7s;  --creature-delay: -5.4s; }
-.fluorescent-creatures img:nth-child(4) { --creature-x: 18%; --creature-y: 67%; --creature-size: clamp(2.2rem, 2.8vw, 3.3rem); --creature-rotate: 10deg; --creature-duration: 11.8s; --creature-delay: -7.3s; --creature-flip: -1; }
-.fluorescent-creatures img:nth-child(5) { --creature-x: 88%; --creature-y: 55%; --creature-size: clamp(3.1rem, 4.2vw, 5rem); --creature-rotate: -7deg; --creature-duration: 13.1s; --creature-delay: -2.6s; }
-.fluorescent-creatures img:nth-child(6) { --creature-x: 61%; --creature-y: 76%; --creature-size: clamp(2.4rem, 3.2vw, 3.8rem); --creature-rotate: -15deg; --creature-duration: 10.6s; --creature-delay: -9.4s; --creature-flip: -1; }
-.fluorescent-creatures img:nth-child(7) { --creature-x: 33%; --creature-y: 88%; --creature-size: clamp(2.3rem, 2.9vw, 3.4rem); --creature-rotate: 6deg; --creature-duration: 12.7s; --creature-delay: -6.1s; }
-.fluorescent-creatures img:nth-child(8) { --creature-x: 70%; --creature-y: 47%; --creature-size: clamp(3rem, 3.8vw, 4.6rem); --creature-rotate: 13deg; --creature-duration: 9.9s; --creature-delay: -4.3s; --creature-flip: -1; }
-.fluorescent-creatures img:nth-child(9) { --creature-x: 52%; --creature-y: 12%; --creature-size: clamp(2.2rem, 2.9vw, 3.4rem); --creature-rotate: -9deg; --creature-duration: 11.4s; --creature-delay: -7.8s; }
+.fluorescent-creatures img:nth-child(1) {
+  --creature-x: 8%;
+  --creature-y: 26%;
+  --creature-size: clamp(2.4rem, 3vw, 3.6rem);
+  --creature-rotate: -12deg;
+  --creature-duration: 10.2s;
+  --creature-delay: -3.1s;
+}
+
+.fluorescent-creatures img:nth-child(2) {
+  --creature-x: 76%;
+  --creature-y: 17%;
+  --creature-size: clamp(3rem, 4vw, 4.8rem);
+  --creature-rotate: 8deg;
+  --creature-duration: 12.4s;
+  --creature-delay: -8.2s;
+  --creature-flip: -1;
+}
+
+.fluorescent-creatures img:nth-child(3) {
+  --creature-x: 45%;
+  --creature-y: 34%;
+  --creature-size: clamp(2.3rem, 3vw, 3.5rem);
+  --creature-rotate: 16deg;
+  --creature-duration: 9.7s;
+  --creature-delay: -5.4s;
+}
+
+.fluorescent-creatures img:nth-child(4) {
+  --creature-x: 18%;
+  --creature-y: 67%;
+  --creature-size: clamp(2.2rem, 2.8vw, 3.3rem);
+  --creature-rotate: 10deg;
+  --creature-duration: 11.8s;
+  --creature-delay: -7.3s;
+  --creature-flip: -1;
+}
+
+.fluorescent-creatures img:nth-child(5) {
+  --creature-x: 88%;
+  --creature-y: 55%;
+  --creature-size: clamp(3.1rem, 4.2vw, 5rem);
+  --creature-rotate: -7deg;
+  --creature-duration: 13.1s;
+  --creature-delay: -2.6s;
+}
+
+.fluorescent-creatures img:nth-child(6) {
+  --creature-x: 61%;
+  --creature-y: 76%;
+  --creature-size: clamp(2.4rem, 3.2vw, 3.8rem);
+  --creature-rotate: -15deg;
+  --creature-duration: 10.6s;
+  --creature-delay: -9.4s;
+  --creature-flip: -1;
+}
+
+.fluorescent-creatures img:nth-child(7) {
+  --creature-x: 33%;
+  --creature-y: 88%;
+  --creature-size: clamp(2.3rem, 2.9vw, 3.4rem);
+  --creature-rotate: 6deg;
+  --creature-duration: 12.7s;
+  --creature-delay: -6.1s;
+}
+
+.fluorescent-creatures img:nth-child(8) {
+  --creature-x: 70%;
+  --creature-y: 47%;
+  --creature-size: clamp(3rem, 3.8vw, 4.6rem);
+  --creature-rotate: 13deg;
+  --creature-duration: 9.9s;
+  --creature-delay: -4.3s;
+  --creature-flip: -1;
+}
+
+.fluorescent-creatures img:nth-child(9) {
+  --creature-x: 52%;
+  --creature-y: 12%;
+  --creature-size: clamp(2.2rem, 2.9vw, 3.4rem);
+  --creature-rotate: -9deg;
+  --creature-duration: 11.4s;
+  --creature-delay: -7.8s;
+}
 
 @keyframes fluorescent-creature-drift {
   0% {
@@ -1605,6 +1945,103 @@ input {
 
 .about-section::before {
   opacity: .68;
+}
+
+.about-kelp-field {
+  position: absolute;
+  inset-inline: 0;
+  inset-block: 0;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  align-items: end;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-kelp-field img {
+  display: block;
+  height: auto;
+  transform-origin: 50% 100%;
+}
+
+.about-kelp-field>img:not(.kelp-background) {
+  position: relative;
+  z-index: 1;
+  width: var(--kelp-width);
+  align-self: end;
+  justify-self: center;
+  opacity: 1;
+  filter:
+    saturate(.82) brightness(.78) drop-shadow(0 .5rem .15rem rgba(0, 39, 42, .34));
+  transform: scaleX(var(--kelp-flip, 1));
+}
+
+.about-kelp-field img:nth-child(1) {
+  --kelp-width: clamp(6.5rem, 9vw, 10rem);
+}
+
+.about-kelp-field img:nth-child(2) {
+  --kelp-width: clamp(7.5rem, 10vw, 12rem);
+}
+
+.about-kelp-field img:nth-child(3) {
+  --kelp-width: clamp(6rem, 8vw, 9rem);
+  --kelp-flip: -1;
+}
+
+.about-kelp-field img:nth-child(4) {
+  --kelp-width: clamp(6.5rem, 8.5vw, 9.5rem);
+}
+
+.about-kelp-field img:nth-child(5) {
+  --kelp-width: clamp(6rem, 8vw, 9rem);
+  --kelp-flip: -1;
+}
+
+.about-kelp-field img:nth-child(6) {
+  --kelp-width: clamp(6rem, 7.5vw, 8.5rem);
+}
+
+.about-kelp-field img:nth-child(7) {
+  --kelp-width: clamp(7.5rem, 10vw, 11.5rem);
+  --kelp-flip: -1;
+}
+
+.about-kelp-field img:nth-child(8) {
+  --kelp-width: clamp(6rem, 8vw, 9rem);
+  --kelp-flip: -1;
+}
+
+.about-kelp-field img:nth-child(9) {
+  --kelp-width: clamp(6.5rem, 8.5vw, 10rem);
+  --kelp-flip: -1;
+}
+
+.about-kelp-field img:nth-child(10) {
+  --kelp-width: clamp(8rem, 10.5vw, 12.5rem);
+}
+
+.about-kelp-field .kelp-background {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  width: auto;
+  height: 85%;
+  opacity: 1;
+  filter:
+    saturate(.48) brightness(.48) drop-shadow(0 .7rem .2rem rgba(0, 25, 27, .52));
+  transform: translateX(-50%) scaleX(var(--kelp-flip, 1));
+}
+
+.about-kelp-field img:nth-child(11) {
+  left: 6%;
+  --kelp-flip: -1;
+}
+
+.about-kelp-field img:nth-child(12) {
+  left: 94%;
 }
 
 .about-card {
