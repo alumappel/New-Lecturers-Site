@@ -20,6 +20,9 @@
   --mist: #b9c9cc;
   --ink: #102f31;
   --abyss: #071f21;
+  --mud-light: #725d48;
+  --mud: #493b2e;
+  --mud-dark: #2d2722;
   --white: #fff;
   --shadow-paper:
     inset 0 2px 0 rgba(255, 255, 255, .72),
@@ -742,7 +745,8 @@ input {
 }
 
 .checklist-section::before,
-.toolbox-section::before {
+.toolbox-section::before,
+.about-section::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1593,7 +1597,14 @@ input {
 
 .about-section {
   padding-block: 9rem 15rem;
-  background: linear-gradient(180deg, #08757b 0%, #0f8388 60%, #09666c 100%);
+  background: linear-gradient(180deg,
+      var(--teal) 0%,
+      var(--deep) 58%,
+      var(--abyss) 100%);
+}
+
+.about-section::before {
+  opacity: .68;
 }
 
 .about-card {
@@ -1692,9 +1703,54 @@ input {
 .site-footer {
   position: relative;
   z-index: 5;
-  padding-block: 2.5rem;
+  overflow: hidden;
+  margin-block-start: -1.5rem;
+  padding-block: 4.75rem 3.5rem;
   color: var(--paper);
-  background: #493b2e;
+  background-color: var(--mud-dark);
+  background-image: url("../svg/paper-texture.svg");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
+  clip-path: polygon(0 1.5rem, 8% .75rem, 18% 1.55rem, 31% .45rem, 44% 1.35rem, 58% .65rem, 72% 1.5rem, 86% .55rem, 100% 1.3rem, 100% 100%, 0 100%);
+  isolation: isolate;
+}
+
+.site-footer::before,
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.site-footer::before {
+  z-index: 0;
+  top: 8%;
+  background-color: var(--mud);
+  background-image: url("../svg/paper-texture.svg");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
+  clip-path: polygon(0 18%, 9% 7%, 21% 19%, 34% 5%, 48% 16%, 61% 8%, 75% 21%, 88% 6%, 100% 15%, 100% 100%, 0 100%);
+  filter: drop-shadow(0 -.35rem 0 rgba(45, 39, 34, .48));
+}
+
+.site-footer::after {
+  z-index: 1;
+  top: 82%;
+  background-color: var(--mud-light);
+  background-image: url("../svg/paper-texture.svg");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
+  clip-path: polygon(0 24%, 12% 9%, 27% 20%, 42% 6%, 56% 18%, 69% 4%, 83% 22%, 93% 8%, 100% 16%, 100% 100%, 0 100%);
+  filter: drop-shadow(0 -.35rem 0 rgba(45, 39, 34, .38));
+}
+
+.site-footer>.container {
+  position: relative;
+  z-index: 2;
 }
 
 .logo-placeholder {
@@ -2211,7 +2267,8 @@ input {
   .training-buoy,
   .training-section::before,
   .checklist-section::before,
-  .toolbox-section::before {
+  .toolbox-section::before,
+  .about-section::before {
     transform: none !important;
   }
 
