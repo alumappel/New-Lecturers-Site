@@ -234,7 +234,6 @@
     rootStyle.setProperty("--diver-drop", (cappedHero * 0.16).toFixed(2) + "px");
     rootStyle.setProperty("--diver-rotate", (cappedHero * 0.025).toFixed(2) + "deg");
     rootStyle.setProperty("--bubbles-shift", (scrollY * -0.018).toFixed(2) + "px");
-    rootStyle.setProperty("--reef-shift", Math.max(-70, scrollY * -0.009).toFixed(2) + "px");
     ticking = false;
   }
 
