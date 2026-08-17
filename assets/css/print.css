@@ -30,13 +30,15 @@ body * {
   position: absolute;
   inset: 0;
   width: 100%;
+  margin: 0 !important;
   padding: 0 !important;
   color: #000 !important;
   background: #fff !important;
 }
 
 #checklist::before,
-.fish,
+.checklist-wave-edge,
+.checklist-fish-field,
 .no-print,
 .info-button,
 .eyebrow {

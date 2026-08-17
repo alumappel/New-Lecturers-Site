@@ -34,8 +34,6 @@
   --diver-drop: 0px;
   --diver-rotate: 0deg;
   --bubbles-shift: 0px;
-  --fish-one-shift: 0px;
-  --fish-two-shift: 0px;
   --reef-shift: 0px;
   --bs-primary: #ffc82d;
   --bs-primary-rgb: 255, 200, 45;
@@ -205,8 +203,7 @@ input {
 .group-number,
 .category-icon,
 .media-icon,
-.buoy-icon,
-.fish {
+.buoy-icon {
   background-image: url("../svg/paper-texture.svg");
   background-repeat: repeat;
   background-size: 180px 180px;
@@ -765,6 +762,7 @@ input {
   align-items: center;
   gap: 2rem;
   padding: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .buoy-icon {
@@ -787,9 +785,117 @@ input {
 }
 
 .checklist-section {
-  padding-block: 8rem 11rem;
+  --checklist-wave-edge-height: clamp(8.6rem, 8.9vw, 24rem);
+  z-index: 3;
+  margin-block-start: calc(0rem - var(--checklist-wave-edge-height));
+  padding-block: calc(8rem + var(--checklist-wave-edge-height)) 11rem;
   color: var(--paper);
-  background: linear-gradient(180deg, #32aeb8 0%, var(--water) 50%, var(--teal) 100%);
+  background: linear-gradient(180deg,
+      transparent 0 var(--checklist-wave-edge-height),
+      var(--shallow) var(--checklist-wave-edge-height),
+      #32aeb8 calc(var(--checklist-wave-edge-height) + 10rem),
+      var(--water) 56%,
+      var(--teal) 100%);
+}
+
+.checklist-wave-edge {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 1;
+  height: var(--checklist-wave-edge-height);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.checklist-wave-edge img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: max(112%, 108rem);
+  height: auto;
+  filter:
+    drop-shadow(0 -2px 0 rgba(255, 255, 255, .34)) drop-shadow(0 -8px 3px rgba(0, 81, 87, .28));
+  transform: translateX(-50%);
+}
+
+.checklist-fish-field {
+  position: absolute;
+  inset: var(--checklist-wave-edge-height) 0 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.checklist-fish {
+  position: absolute;
+  display: block;
+  width: clamp(6rem, 9vw, 10rem);
+  height: auto;
+  opacity: .88;
+  filter: drop-shadow(0 8px 2px rgba(0, 44, 48, .34));
+}
+
+.checklist-fish:nth-child(1) {
+  top: 5%;
+  left: -2rem;
+  width: clamp(7rem, 10vw, 11rem);
+  transform: scaleX(-1) rotate(3deg);
+}
+
+.checklist-fish:nth-child(2) {
+  top: 15%;
+  right: 1%;
+  transform: scaleX(-1) rotate(-4deg);
+}
+
+.checklist-fish:nth-child(3) {
+  top: 27%;
+  left: 3%;
+  width: clamp(5.5rem, 8vw, 8.5rem);
+  transform: rotate(-2deg);
+}
+
+.checklist-fish:nth-child(4) {
+  top: 39%;
+  right: -2.5rem;
+  width: clamp(8rem, 11vw, 12rem);
+  transform: scaleX(-1) rotate(2deg);
+}
+
+.checklist-fish:nth-child(5) {
+  top: 51%;
+  left: -2rem;
+  width: clamp(7rem, 10vw, 10.5rem);
+  transform: rotate(4deg);
+}
+
+.checklist-fish:nth-child(6) {
+  top: 63%;
+  right: 4%;
+  width: clamp(6rem, 8vw, 9rem);
+  transform: scaleX(-1) rotate(-3deg);
+}
+
+.checklist-fish:nth-child(7) {
+  top: 74%;
+  left: 1%;
+  width: clamp(8.5rem, 12vw, 13rem);
+  transform: rotate(2deg);
+}
+
+.checklist-fish:nth-child(8) {
+  top: 85%;
+  right: 0;
+  width: clamp(5.5rem, 7vw, 8rem);
+  transform: scaleX(-1) rotate(4deg);
+}
+
+.checklist-fish:nth-child(9) {
+  top: 93%;
+  left: 12%;
+  width: clamp(6.5rem, 9vw, 9.5rem);
+  transform: rotate(-3deg);
 }
 
 .print-checklist-header {
@@ -930,44 +1036,6 @@ input {
 
 .info-button:hover {
   background: #dce9ea;
-}
-
-.fish {
-  position: absolute;
-  z-index: 2;
-  width: 3.2rem;
-  height: 1.75rem;
-  border-radius: 60% 45% 45% 60%;
-  background: var(--yellow);
-  filter: drop-shadow(0 6px 1px rgba(0, 44, 48, .3));
-}
-
-.fish::after {
-  content: "";
-  position: absolute;
-  inset-block-start: .15rem;
-  inset-inline-end: -.95rem;
-  border-block: .72rem solid transparent;
-  border-inline-start: .95rem solid var(--yellow);
-}
-
-.fish-one {
-  inset-block-start: 22%;
-  inset-inline-start: 3%;
-  transform: translateX(var(--fish-one-shift));
-}
-
-.fish-two {
-  inset-block-start: 66%;
-  inset-inline-end: 2%;
-  width: 2.4rem;
-  height: 1.3rem;
-  background: var(--coral-light);
-  transform: scaleX(-1) translateX(var(--fish-two-shift));
-}
-
-.fish-two::after {
-  border-inline-start-color: var(--coral-light);
 }
 
 .toolbox-section {
@@ -1363,8 +1431,7 @@ input {
   .group-number,
   .category-icon,
   .media-icon,
-  .buoy-icon,
-  .fish) {
+  .buoy-icon) {
   background-image: url("../svg/paper-texture.svg") !important;
   background-repeat: repeat !important;
   background-size: 180px 180px !important;
@@ -1400,6 +1467,11 @@ input {
   z-index: 22;
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-overlap-fade));
   mask-image: linear-gradient(180deg, transparent 0, #000 var(--training-overlap-fade));
+}
+
+.checklist-section::after {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--checklist-wave-edge-height));
+  mask-image: linear-gradient(180deg, transparent 0, #000 var(--checklist-wave-edge-height));
 }
 
 /* Layered cut-paper depth: short edge shadows plus a focused secondary shadow. */
@@ -1680,6 +1752,15 @@ input {
     padding-block-start: calc(var(--training-hero-overlap) + 3rem);
   }
 
+  .checklist-section {
+    --checklist-wave-edge-height: 6.25rem;
+    padding-block-start: calc(6rem + var(--checklist-wave-edge-height));
+  }
+
+  .checklist-wave-edge img {
+    width: 78rem;
+  }
+
   .task-list li {
     align-items: stretch;
     flex-direction: column;
@@ -1731,7 +1812,6 @@ input {
   .sky-layer,
   .diver,
   .training-buoy,
-  .fish,
   .reef,
   .training-section::before,
   .checklist-section::before,
