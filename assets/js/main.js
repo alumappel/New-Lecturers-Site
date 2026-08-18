@@ -102,20 +102,125 @@
   var taskModal = window.bootstrap ? window.bootstrap.Modal.getOrCreateInstance(taskModalElement) : null;
   var lastModalTrigger = null;
   var taskTitle = document.getElementById("taskInfoTitle");
-  var taskAction = document.getElementById("taskAction");
-  var taskContact = document.getElementById("taskContact");
-  var taskMissing = document.getElementById("taskMissing");
+  var taskBody = document.getElementById("taskInfoDescription");
+
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function sanitizeUrl(url) {
+    if (!url) return "#";
+    var trimmed = String(url).trim();
+    if (/^(https?:\/\/|mailto:|tel:|\/|\.\/|\.\.\/|#|assets\/)/i.test(trimmed)) {
+      return trimmed;
+    }
+    return encodeURI(trimmed);
+  }
+
+  function renderBulletItem(item) {
+    if (!item) return "";
+
+    if (typeof item === "string") {
+      return "<li>" + escapeHtml(item) + "</li>";
+    }
+
+    if (typeof item === "object") {
+      var labelHtml = item.label ? '<strong class="task-modal-item-label">' + escapeHtml(item.label) + ':</strong> ' : '';
+      var itemText = item.text || item.title || "";
+      var contentHtml = "";
+
+      if (item.phone) {
+        var rawPhone = String(item.phone).trim();
+        var cleanPhone = rawPhone.replace(/[^0-9+*#]/g, "");
+        var phoneLabel = itemText || rawPhone;
+        contentHtml = '<a class="task-modal-link task-modal-phone" href="tel:' + cleanPhone + '" dir="ltr">' + escapeHtml(phoneLabel) + '</a>';
+        if (item.contactName) {
+          contentHtml += ' <span class="text-muted">(' + escapeHtml(item.contactName) + ')</span>';
+        }
+      } else if (item.url || item.link) {
+        var linkUrl = sanitizeUrl(item.url || item.link);
+        var linkLabel = itemText || item.url || item.link;
+        contentHtml = '<a class="task-modal-link task-modal-url" href="' + escapeHtml(linkUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(linkLabel) + ' <span class="visually-hidden">(נפתח בלשונית חדשה)</span></a>';
+      } else if (item.file || item.doc) {
+        var fileUrl = sanitizeUrl(item.file || item.doc);
+        var fileLabel = itemText || "הורדת מסמך";
+        contentHtml = '<a class="task-modal-link task-modal-doc" href="' + escapeHtml(fileUrl) + '" target="_blank" rel="noopener noreferrer" download>' + escapeHtml(fileLabel) + '</a>';
+      } else if (item.email || item.mail) {
+        var emailVal = String(item.email || item.mail).trim();
+        var emailLabel = itemText || emailVal;
+        contentHtml = '<a class="task-modal-link task-modal-email" href="mailto:' + escapeHtml(emailVal) + '">' + escapeHtml(emailLabel) + '</a>';
+      } else if (itemText) {
+        contentHtml = escapeHtml(itemText);
+      }
+
+      if (item.note || item.subtext) {
+        contentHtml += '<div class="task-modal-subtext text-muted small mt-1">' + escapeHtml(item.note || item.subtext) + '</div>';
+      }
+
+      return "<li>" + labelHtml + contentHtml + "</li>";
+    }
+
+    return "";
+  }
 
   document.querySelectorAll("[data-task-info]").forEach(function (button) {
     button.addEventListener("click", function () {
       var content = window.NEW_LECTURERS_CONTENT;
-      var details = content && content.checklistDetails[button.dataset.taskInfo];
-      if (!details || !taskModal) return;
+      var details = content && content.checklistDetails && content.checklistDetails[button.dataset.taskInfo];
+      if (!details || !taskModal || !taskBody) return;
 
-      taskTitle.textContent = details.title;
-      taskAction.textContent = details.action;
-      taskContact.textContent = details.contact;
-      taskMissing.innerHTML = "<strong>להשלמה לפני השקה:</strong> " + details.missing;
+      if (taskTitle) {
+        taskTitle.textContent = details.title || "מידע נוסף";
+      }
+
+      var bodyHtml = "";
+
+      // מה עושים (אופציונלי - מוצג רק אם קיים)
+      if (details.action) {
+        var actionHeading = details.actionTitle || "מה עושים?";
+        bodyHtml += '<div class="task-modal-section mb-3">' +
+          '<h3 class="h6 fw-bold">' + escapeHtml(actionHeading) + '</h3>' +
+          '<p class="mb-0">' + escapeHtml(details.action) + '</p>' +
+          '</div>';
+      }
+
+      // למי פונים (אופציונלי - מוצג רק אם קיים)
+      if (details.contact) {
+        var contactHeading = details.contactTitle || "למי פונים?";
+        bodyHtml += '<div class="task-modal-section mb-3">' +
+          '<h3 class="h6 fw-bold">' + escapeHtml(contactHeading) + '</h3>' +
+          '<p class="mb-0">' + escapeHtml(details.contact) + '</p>' +
+          '</div>';
+      }
+
+      // רשימת בולטים / קישורים / טלפונים / מסמכים (אופציונלי - מוצג רק אם קיים ויש פריטים)
+      var bulletList = details.bullets || details.items || details.links;
+      if (Array.isArray(bulletList) && bulletList.length > 0) {
+        var bulletsHeading = details.bulletsTitle || details.linksTitle || "קישורים ומידע שימושי:";
+        var itemsHtml = bulletList.map(renderBulletItem).filter(Boolean).join("");
+
+        if (itemsHtml) {
+          bodyHtml += '<div class="task-modal-section mb-3">' +
+            (bulletsHeading ? '<h3 class="h6 fw-bold mb-2">' + escapeHtml(bulletsHeading) + '</h3>' : '') +
+            '<ul class="task-modal-list">' + itemsHtml + '</ul>' +
+            '</div>';
+        }
+      }
+
+      // הערת placeholder להשלמה לפני השקה (אופציונלי - מוצג רק אם קיים)
+      if (details.missing) {
+        bodyHtml += '<div class="content-placeholder mt-3" role="note">' +
+          '<strong>להשלמה לפני השקה:</strong> ' + escapeHtml(details.missing) +
+          '</div>';
+      }
+
+      taskBody.innerHTML = bodyHtml;
       lastModalTrigger = button;
       taskModal.show(button);
       window.siteAnalytics("checklist_info_open", { task: button.dataset.taskInfo });

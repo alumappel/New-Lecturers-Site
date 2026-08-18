@@ -2255,6 +2255,59 @@ input {
   border-radius: 0 0 1.25rem 1.25rem;
 }
 
+/* Task Info Modal Dynamic Content */
+.task-modal-section {
+  color: var(--ink);
+}
+
+.task-modal-section h3 {
+  color: var(--deep);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.task-modal-list {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-modal-list li {
+  line-height: 1.55;
+}
+
+.task-modal-item-label {
+  color: var(--deep);
+  font-weight: 700;
+}
+
+.task-modal-link {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.task-modal-link:hover,
+.task-modal-link:focus-visible {
+  color: var(--deep);
+  text-decoration-color: var(--coral-dark);
+}
+
+.task-modal-phone {
+  display: inline-block;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+.task-modal-subtext {
+  font-size: 0.9rem;
+}
+
+
 /* Shared paper grain: one tile for components and one low-cost overlay per scene. */
 :where(.paper-card,
   .journey-card,
