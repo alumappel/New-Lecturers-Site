@@ -18,7 +18,7 @@
   var backToTop = document.getElementById("backToTop");
 
   // נקודת חיבור עתידית לאנליטיקה. כרגע אינה שולחת מידע לשום שירות.
-  window.siteAnalytics = window.siteAnalytics || function () {};
+  window.siteAnalytics = window.siteAnalytics || function () { };
 
   function getSavedTasks() {
     try {
@@ -234,36 +234,113 @@
   });
 
   document.querySelectorAll(".support-category").forEach(function (category) {
-    var switchVersion = 0;
+    var isAnimating = false;
 
-    category.querySelectorAll("details").forEach(function (item) {
-      var summary = item.querySelector("summary");
-
-      summary.addEventListener("click", function (event) {
-        event.preventDefault();
-        switchVersion += 1;
-        var currentVersion = switchVersion;
-        var wasOpen = item.open;
-        var openItems = Array.from(category.querySelectorAll("details[open]"));
-
-        openItems.forEach(function (openItem) {
-          openItem.removeAttribute("open");
-        });
-
-        if (wasOpen) return;
-
-        if (!openItems.length) {
-          item.setAttribute("open", "");
+    function collapseDetails(detailsItem, animate) {
+      return new Promise(function (resolve) {
+        var content = detailsItem.querySelector(".support-details-content");
+        if (!content || !detailsItem.hasAttribute("open")) {
+          resolve();
           return;
         }
 
-        window.requestAnimationFrame(function () {
-          window.requestAnimationFrame(function () {
-            if (currentVersion === switchVersion) {
-              item.setAttribute("open", "");
-            }
+        if (!animate || reduceMotion.matches) {
+          detailsItem.removeAttribute("open");
+          resolve();
+          return;
+        }
+
+        var startHeight = content.offsetHeight;
+        content.style.overflow = "hidden";
+        content.style.height = startHeight + "px";
+
+        var anim = content.animate(
+          [
+            { height: startHeight + "px" },
+            { height: "0px" }
+          ],
+          {
+            duration: 220,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)"
+          }
+        );
+
+        anim.onfinish = function () {
+          detailsItem.removeAttribute("open");
+          content.style.height = "";
+          content.style.overflow = "";
+          resolve();
+        };
+      });
+    }
+
+    function expandDetails(detailsItem, animate) {
+      return new Promise(function (resolve) {
+        var content = detailsItem.querySelector(".support-details-content");
+        if (!content) {
+          detailsItem.setAttribute("open", "");
+          resolve();
+          return;
+        }
+
+        detailsItem.setAttribute("open", "");
+
+        if (!animate || reduceMotion.matches) {
+          resolve();
+          return;
+        }
+
+        var endHeight = content.offsetHeight;
+        content.style.overflow = "hidden";
+        content.style.height = "0px";
+
+        var anim = content.animate(
+          [
+            { height: "0px" },
+            { height: endHeight + "px" }
+          ],
+          {
+            duration: 250,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)"
+          }
+        );
+
+        anim.onfinish = function () {
+          content.style.height = "";
+          content.style.overflow = "";
+          resolve();
+        };
+      });
+    }
+
+    category.querySelectorAll("details").forEach(function (item) {
+      var summary = item.querySelector("summary");
+      if (!summary) return;
+
+      summary.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (isAnimating) return;
+
+        var isOpen = item.hasAttribute("open");
+        var openItems = Array.from(category.querySelectorAll("details[open]"));
+
+        if (isOpen) {
+          isAnimating = true;
+          collapseDetails(item, true).then(function () {
+            isAnimating = false;
           });
-        });
+        } else {
+          isAnimating = true;
+          var closePromises = openItems.map(function (openItem) {
+            return collapseDetails(openItem, true);
+          });
+
+          Promise.all(closePromises).then(function () {
+            expandDetails(item, true).then(function () {
+              isAnimating = false;
+            });
+          });
+        }
       });
     });
   });
