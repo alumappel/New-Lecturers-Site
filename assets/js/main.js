@@ -24,6 +24,13 @@
   var toolboxCoralTwo = document.querySelector(".toolbox-coral-two");
   var toolboxCoralThree = document.querySelector(".toolbox-coral-three");
   var desktopViewport = window.matchMedia("(min-width: 768px)");
+  var supportSection = document.getElementById("support");
+  var supportCreatures = Array.from(document.querySelectorAll(".fluorescent-creatures img"));
+  var supportCreatureDirections = [1, -1, 1, -1, 1, -1, 1, -1, 1];
+  var supportCreatureMotion = supportCreatures.map(function (creature, index) {
+    return { direction: supportCreatureDirections[index] || 1, x: 0, path: 0 };
+  });
+  var lastSupportCreatureScroll = null;
   var checklistSection = document.getElementById("checklist");
   var checklistFish = Array.from(document.querySelectorAll(".checklist-fish"));
   var checklistFishDirections = [1, 1, 1, -1, -1, 1, -1, 1, -1];
@@ -542,6 +549,34 @@
       }
     }
 
+    if (supportSection && supportCreatures.length) {
+      var supportBounds = supportSection.getBoundingClientRect();
+      var isSupportVisible = supportBounds.bottom > 0 && supportBounds.top < window.innerHeight;
+
+      if (isSupportVisible) {
+        var supportScroll = scrollY - (supportSection.offsetTop - window.innerHeight);
+        var supportScrollDelta = lastSupportCreatureScroll === null ? 0 : Math.max(-52, Math.min(52, supportScroll - lastSupportCreatureScroll));
+
+        supportCreatures.forEach(function (creature, index) {
+          var motion = supportCreatureMotion[index];
+
+          motion.x = Math.max(-60, Math.min(60, motion.x + (supportScrollDelta * 0.052 * motion.direction)));
+          motion.path += Math.abs(supportScrollDelta) * 0.052;
+
+          var swimY = Math.sin((motion.path * 0.2) + (index * 1.25)) * 3.2;
+          var swimTurn = Math.sin((motion.path * 0.14) + (index * 1.25)) * 2.1;
+
+          creature.style.setProperty("--creature-swim-x", motion.x.toFixed(2) + "px");
+          creature.style.setProperty("--creature-swim-y", swimY.toFixed(2) + "px");
+          creature.style.setProperty("--creature-swim-turn", swimTurn.toFixed(2) + "deg");
+        });
+
+        lastSupportCreatureScroll = supportScroll;
+      } else {
+        lastSupportCreatureScroll = null;
+      }
+    }
+
     if (checklistSection && checklistFish.length) {
       var checklistBounds = checklistSection.getBoundingClientRect();
       var isChecklistVisible = checklistBounds.bottom > 0 && checklistBounds.top < window.innerHeight;
@@ -600,6 +635,16 @@
         motion.path = 0;
       });
       lastChecklistScroll = null;
+      supportCreatures.forEach(function (creature) {
+        creature.style.removeProperty("--creature-swim-x");
+        creature.style.removeProperty("--creature-swim-y");
+        creature.style.removeProperty("--creature-swim-turn");
+      });
+      supportCreatureMotion.forEach(function (motion) {
+        motion.x = 0;
+        motion.path = 0;
+      });
+      lastSupportCreatureScroll = null;
       window.removeEventListener("scroll", requestParallaxUpdate);
     } else {
       updateParallax();

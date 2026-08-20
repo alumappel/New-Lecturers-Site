@@ -1841,6 +1841,9 @@ input {
 }
 
 .fluorescent-creatures img {
+  --creature-swim-x: 0px;
+  --creature-swim-y: 0px;
+  --creature-swim-turn: 0deg;
   position: absolute;
   top: var(--creature-y);
   left: var(--creature-x);
@@ -1850,6 +1853,7 @@ input {
   opacity: .4;
   filter:
     drop-shadow(0 0 .3rem rgba(81, 196, 205, .34)) drop-shadow(0 0 .75rem rgba(81, 196, 205, .18));
+  transform: translate3d(var(--creature-swim-x), var(--creature-swim-y), 0) rotate(calc(var(--creature-rotate) + var(--creature-swim-turn))) scaleX(var(--creature-flip, 1));
   animation: fluorescent-creature-drift var(--creature-duration, 11s) ease-in-out var(--creature-delay, 0s) infinite alternate;
 }
 
@@ -1941,17 +1945,17 @@ input {
 @keyframes fluorescent-creature-drift {
   0% {
     opacity: .28;
-    transform: translateY(.35rem) rotate(var(--creature-rotate)) scaleX(var(--creature-flip, 1));
+    transform: translate3d(var(--creature-swim-x), calc(var(--creature-swim-y) + .35rem), 0) rotate(calc(var(--creature-rotate) + var(--creature-swim-turn))) scaleX(var(--creature-flip, 1));
   }
 
   55% {
     opacity: .68;
-    transform: translateY(-.25rem) rotate(calc(var(--creature-rotate) + 2deg)) scaleX(var(--creature-flip, 1));
+    transform: translate3d(var(--creature-swim-x), calc(var(--creature-swim-y) - .25rem), 0) rotate(calc(var(--creature-rotate) + var(--creature-swim-turn) + 2deg)) scaleX(var(--creature-flip, 1));
   }
 
   100% {
     opacity: .4;
-    transform: translateY(.1rem) rotate(var(--creature-rotate)) scaleX(var(--creature-flip, 1));
+    transform: translate3d(var(--creature-swim-x), calc(var(--creature-swim-y) + .1rem), 0) rotate(calc(var(--creature-rotate) + var(--creature-swim-turn))) scaleX(var(--creature-flip, 1));
   }
 }
 
