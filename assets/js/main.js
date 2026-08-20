@@ -11,6 +11,10 @@
   var progressElement = document.getElementById("checklistProgress");
   var progressAnnouncement = document.getElementById("progressAnnouncement");
   var resetButton = document.getElementById("resetChecklist");
+  var resetModalElement = document.getElementById("resetChecklistModal");
+  var confirmResetButton = document.getElementById("confirmResetChecklist");
+  var resetModal = window.bootstrap && resetModalElement ? window.bootstrap.Modal.getOrCreateInstance(resetModalElement) : null;
+  var focusFirstTaskAfterReset = false;
   var printButton = document.getElementById("printChecklist");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var siteNavbar = document.getElementById("siteNavbar");
@@ -86,16 +90,41 @@
     });
   });
 
-  resetButton.addEventListener("click", function () {
-    var shouldReset = window.confirm("לאפס את כל הסימונים בצ’ק־ליסט? לא ניתן לשחזר אותם לאחר האיפוס.");
-    if (!shouldReset) return;
-
+  function resetChecklist() {
     checkboxes.forEach(function (checkbox) {
       checkbox.checked = false;
     });
     updateProgress(true);
-    checkboxes[0].focus();
+
+    if (resetModal) {
+      focusFirstTaskAfterReset = true;
+      resetModal.hide();
+    } else if (checkboxes[0]) {
+      checkboxes[0].focus();
+    }
+  }
+
+  resetButton.addEventListener("click", function () {
+    if (resetModal) {
+      resetModal.show(resetButton);
+      return;
+    }
+
+    resetChecklist();
   });
+
+  if (confirmResetButton) {
+    confirmResetButton.addEventListener("click", resetChecklist);
+  }
+
+  if (resetModalElement) {
+    resetModalElement.addEventListener("hidden.bs.modal", function () {
+      if (focusFirstTaskAfterReset && checkboxes[0]) {
+        checkboxes[0].focus();
+      }
+      focusFirstTaskAfterReset = false;
+    });
+  }
 
   printButton.addEventListener("click", function () {
     window.siteAnalytics("checklist_print", {});

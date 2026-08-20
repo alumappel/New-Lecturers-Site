@@ -19,7 +19,7 @@
     href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
   <link rel="stylesheet" href="assets/css/styles.css?v=20260820_v34">
-  <link rel="stylesheet" href="assets/css/print.css?v=20260820_v29" media="print">
+  <link rel="stylesheet" href="assets/css/print.css?v=20260820_v30" media="print">
 </head>
 
 <body>
@@ -1005,6 +1005,25 @@
     </div>
   </div>
 
+  <div class="modal fade" id="resetChecklistModal" tabindex="-1" aria-labelledby="resetChecklistTitle"
+    aria-describedby="resetChecklistDescription" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h4" id="resetChecklistTitle">מפליגים להתחלה חדשה?</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="סגירת החלון"></button>
+        </div>
+        <div class="modal-body" id="resetChecklistDescription">
+          <p class="mb-0">לאפס את כל הסימונים בצ׳ק־ליסט? ההתקדמות הנוכחית תימחק, אבל תמיד אפשר לסמן מחדש.</p>
+        </div>
+        <div class="modal-footer gap-2">
+          <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">לא, נשאיר את ההתקדמות</button>
+          <button type="button" class="btn btn-primary" id="confirmResetChecklist">כן, מאפסים ומתחילים מחדש</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="taskInfoModal" tabindex="-1" aria-labelledby="taskInfoTitle"
     aria-describedby="taskInfoDescription" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -1024,7 +1043,7 @@
 
   <script src="assets/js/content.js?v=20260820_v30"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js?v=20260820_v31"></script>
+  <script src="assets/js/main.js?v=20260820_v32"></script>
 </body>
 
 </html>

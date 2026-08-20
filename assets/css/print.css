@@ -17,18 +17,13 @@ body {
   filter: none !important;
 }
 
-body * {
-  visibility: hidden;
-}
-
-#checklist,
-#checklist * {
-  visibility: visible;
+body > :not(main),
+main > :not(#checklist) {
+  display: none !important;
 }
 
 #checklist {
-  position: absolute;
-  inset: 0;
+  position: static;
   width: 100%;
   margin: 0 !important;
   padding: 0 !important;
@@ -142,11 +137,32 @@ body * {
 }
 
 .task-list label {
+  position: relative;
   gap: .5rem;
   font-size: 10pt;
 }
 
-.form-check-input {
+#checklist .task-checkbox {
+  display: none !important;
+}
+
+#checklist .task-list label::before {
+  content: "";
+  display: grid;
+  flex: 0 0 1rem;
   width: 1rem;
   height: 1rem;
+  margin-block-start: .1rem;
+  place-items: center;
+  border: 1.5px solid #222;
+  border-radius: .12rem;
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 12pt;
+  font-weight: 800;
+  line-height: 1;
+}
+
+#checklist .task-list label:has(.task-checkbox:checked)::before {
+  content: "✓";
 }
