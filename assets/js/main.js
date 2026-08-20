@@ -440,5 +440,23 @@
     }
   });
 
+  // Auto-show connectedModal when reaching 50% scroll depth (once per session)
+  var autoConnectedModal = document.getElementById("connectedModal");
+  if (autoConnectedModal && window.bootstrap && window.bootstrap.Modal) {
+    if (!sessionStorage.getItem("hit_connected_modal_shown")) {
+      var checkScrollPopup = function () {
+        var scrollPos = window.scrollY || window.pageYOffset;
+        var maxScroll = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+        if (maxScroll > 0 && (scrollPos / maxScroll) >= 0.50) {
+          sessionStorage.setItem("hit_connected_modal_shown", "true");
+          window.removeEventListener("scroll", checkScrollPopup);
+          var bsModal = window.bootstrap.Modal.getInstance(autoConnectedModal) || new window.bootstrap.Modal(autoConnectedModal);
+          bsModal.show();
+        }
+      };
+      window.addEventListener("scroll", checkScrollPopup, { passive: true });
+    }
+  }
+
   restoreChecklist();
 })();

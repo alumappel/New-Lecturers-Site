@@ -284,9 +284,23 @@ input {
 
 .nav-logo {
   display: block;
-  width: 10rem;
-  max-height: 3.15rem;
+  height: 3.25rem;
+  width: auto;
+  max-width: 16rem;
   object-fit: contain;
+}
+
+.footer-logo {
+  display: block;
+  width: auto;
+  max-width: 16rem;
+  max-height: 3.5rem;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo:hover {
+  opacity: 0.9;
 }
 
 .nav-link {
@@ -2288,6 +2302,81 @@ input {
   color: var(--ink);
   background: var(--yellow);
   box-shadow: 0 10px 0 #b98d00, 0 13px 3px -2px rgba(0, 44, 48, .4);
+}
+
+#connectedModal .modal-content,
+.connected-modal-content {
+  --bs-modal-bg: var(--yellow) !important;
+  --bs-modal-border-color: rgba(0, 81, 87, 0.18) !important;
+  --bs-modal-border-radius: 1.4rem !important;
+  --bs-modal-color: var(--ink) !important;
+  background-color: var(--yellow) !important;
+  background-image: url("../svg/paper-texture.svg") !important;
+  background-repeat: repeat !important;
+  background-size: 180px 180px !important;
+  background-blend-mode: multiply !important;
+  border: 1px solid rgba(0, 81, 87, 0.18) !important;
+  border-radius: 1.4rem !important;
+  color: var(--ink) !important;
+  box-shadow: 0 10px 0 #b98d00, 0 15px 35px rgba(0, 35, 39, 0.45) !important;
+  overflow: hidden !important;
+}
+
+#connectedModal .modal-header {
+  border-bottom: 1px solid rgba(0, 44, 48, 0.12) !important;
+  padding: 1.5rem 1.75rem 0.75rem !important;
+  background: transparent !important;
+}
+
+#connectedModal .modal-title {
+  color: var(--ink) !important;
+  font-weight: 750 !important;
+  font-size: 1.5rem !important;
+}
+
+#connectedModal .modal-body {
+  padding: 1.25rem 1.75rem 1.75rem !important;
+  background: transparent !important;
+}
+
+#connectedModal p {
+  color: var(--ink) !important;
+}
+
+#connectedModal .btn-close {
+  filter: none !important;
+  opacity: 0.85 !important;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23005157'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1.25rem 1.25rem no-repeat !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+#connectedModal .btn-close:hover {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: scale(1.15) !important;
+}
+
+.modal:not(#connectedModal) .btn-close {
+  filter: none !important;
+  opacity: 0.85 !important;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1.25rem 1.25rem no-repeat !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+.modal:not(#connectedModal) .btn-close:hover {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: scale(1.15) !important;
 }
 
 .connected-banner .eyebrow {
