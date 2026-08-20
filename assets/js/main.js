@@ -20,6 +20,10 @@
   var siteNavbar = document.getElementById("siteNavbar");
   var mainNav = document.getElementById("mainNav");
   var backToTop = document.getElementById("backToTop");
+  var toolboxSection = document.getElementById("toolbox");
+  var toolboxCoralTwo = document.querySelector(".toolbox-coral-two");
+  var toolboxCoralThree = document.querySelector(".toolbox-coral-three");
+  var desktopViewport = window.matchMedia("(min-width: 768px)");
   var checklistSection = document.getElementById("checklist");
   var checklistFish = Array.from(document.querySelectorAll(".checklist-fish"));
   var checklistFishDirections = [1, 1, 1, -1, -1, 1, -1, 1, -1];
@@ -519,6 +523,24 @@
     rootStyle.setProperty("--diver-drop", (cappedHero * 0.16).toFixed(2) + "px");
     rootStyle.setProperty("--diver-rotate", (cappedHero * 0.025).toFixed(2) + "deg");
     rootStyle.setProperty("--bubbles-shift", (scrollY * -0.018).toFixed(2) + "px");
+
+    if (toolboxSection && desktopViewport.matches) {
+      if (toolboxCoralTwo) {
+        var coralTwoBounds = toolboxCoralTwo.getBoundingClientRect();
+        var coralTwoProgress = Math.max(0, Math.min(1, (window.innerHeight - coralTwoBounds.top) / (window.innerHeight * 0.58)));
+        var coralTwoRemainingDistance = Math.pow(1 - coralTwoProgress, 2);
+
+        toolboxSection.style.setProperty("--toolbox-coral-left-enter", (-224 * coralTwoRemainingDistance).toFixed(2) + "px");
+      }
+
+      if (toolboxCoralThree) {
+        var coralThreeBounds = toolboxCoralThree.getBoundingClientRect();
+        var coralThreeProgress = Math.max(0, Math.min(1, (window.innerHeight - coralThreeBounds.top) / (window.innerHeight * 0.58)));
+        var coralThreeRemainingDistance = Math.pow(1 - coralThreeProgress, 2);
+
+        toolboxSection.style.setProperty("--toolbox-coral-right-enter", (224 * coralThreeRemainingDistance).toFixed(2) + "px");
+      }
+    }
 
     if (checklistSection && checklistFish.length) {
       var checklistBounds = checklistSection.getBoundingClientRect();

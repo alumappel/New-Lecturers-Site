@@ -1249,6 +1249,26 @@ input {
   transform: scaleX(-1) rotate(52deg);
 }
 
+@media (min-width: 768px) {
+  .js .toolbox-coral-two {
+    transform: translateX(var(--toolbox-coral-left-enter, -14rem)) rotate(55deg);
+  }
+
+  .js .toolbox-coral-three {
+    transform: translateX(var(--toolbox-coral-right-enter, 14rem)) scaleX(-1) rotate(52deg);
+  }
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
+  .js .toolbox-coral-two {
+    transform: rotate(55deg);
+  }
+
+  .js .toolbox-coral-three {
+    transform: scaleX(-1) rotate(52deg);
+  }
+}
+
 .resource-panel {
   --resource-panel-tail: clamp(5rem, 8vw, 8rem);
   position: relative;
