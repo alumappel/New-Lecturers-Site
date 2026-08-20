@@ -119,8 +119,16 @@ main > :not(#checklist) {
   padding-block-end: .4rem;
 }
 
-.group-heading h3 {
+.group-heading-title {
   font-size: 15pt;
+}
+
+.checklist-group-toggle-icon {
+  display: none !important;
+}
+
+#checklist .checklist-group-content[hidden] {
+  display: block !important;
 }
 
 .group-number {

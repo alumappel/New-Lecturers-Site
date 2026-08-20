@@ -20,6 +20,9 @@
   var siteNavbar = document.getElementById("siteNavbar");
   var mainNav = document.getElementById("mainNav");
   var backToTop = document.getElementById("backToTop");
+  var mobileViewport = window.matchMedia("(max-width: 767.98px)");
+  var checklistGroupToggles = Array.from(document.querySelectorAll(".checklist-group-toggle"));
+  var mobileResourceToggles = Array.from(document.querySelectorAll(".mobile-resource-toggle"));
   var sectionNavItems = Array.from(document.querySelectorAll('#mainNav .nav-link[href^="#"]')).map(function (navLink) {
     var section = document.querySelector(navLink.getAttribute("href"));
     return section ? { navLink: navLink, section: section } : null;
@@ -27,6 +30,55 @@
 
   // נקודת חיבור עתידית לאנליטיקה. כרגע אינה שולחת מידע לשום שירות.
   window.siteAnalytics = window.siteAnalytics || function () { };
+
+  function setExpandableState(toggle, isExpanded) {
+    var content = document.getElementById(toggle.getAttribute("aria-controls"));
+    toggle.setAttribute("aria-expanded", String(isExpanded));
+
+    if (content) {
+      content.hidden = !isExpanded;
+    }
+  }
+
+  function updateMobileAccordions() {
+    if (mobileViewport.matches) {
+      checklistGroupToggles.forEach(function (toggle) {
+        setExpandableState(toggle, false);
+      });
+
+      mobileResourceToggles.forEach(function (toggle, index) {
+        setExpandableState(toggle, index === 0);
+      });
+      return;
+    }
+
+    checklistGroupToggles.concat(mobileResourceToggles).forEach(function (toggle) {
+      setExpandableState(toggle, true);
+    });
+  }
+
+  function setMobileAccordionListeners(toggles) {
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener("click", function () {
+        if (!mobileViewport.matches) return;
+
+        var shouldExpand = toggle.getAttribute("aria-expanded") !== "true";
+        toggles.forEach(function (otherToggle) {
+          setExpandableState(otherToggle, otherToggle === toggle && shouldExpand);
+        });
+      });
+    });
+  }
+
+  setMobileAccordionListeners(checklistGroupToggles);
+  setMobileAccordionListeners(mobileResourceToggles);
+  updateMobileAccordions();
+
+  if (mobileViewport.addEventListener) {
+    mobileViewport.addEventListener("change", updateMobileAccordions);
+  } else {
+    mobileViewport.addListener(updateMobileAccordions);
+  }
 
   function getSavedTasks() {
     try {

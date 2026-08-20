@@ -18,8 +18,8 @@
   <link rel="stylesheet"
     href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260820_v34">
-  <link rel="stylesheet" href="assets/css/print.css?v=20260820_v30" media="print">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260820_v37">
+  <link rel="stylesheet" href="assets/css/print.css?v=20260820_v31" media="print">
 </head>
 
 <body>
@@ -214,13 +214,15 @@
 
         <div class="checklist-groups">
           <article class="checklist-group paper-card">
-            <div class="group-heading">
+            <button class="group-heading checklist-group-toggle" id="checklist-group-1-toggle" type="button"
+              aria-expanded="true" aria-controls="checklist-group-1-content">
               <span class="group-number" aria-hidden="true">1</span>
-              <div>
-                <h3>התארגנות טכנית</h3>
-              </div>
-            </div>
-            <ul class="task-list">
+              <span class="group-heading-title" role="heading" aria-level="3">התארגנות טכנית</span>
+              <span class="checklist-group-toggle-icon" aria-hidden="true"><i class="fi fi-rr-angle-small-down"></i></span>
+            </button>
+            <div class="checklist-group-content" id="checklist-group-1-content" role="region"
+              aria-labelledby="checklist-group-1-toggle">
+              <ul class="task-list">
               <li><label><input class="form-check-input task-checkbox" type="checkbox"
                     data-task-id="tech-login"><span>לשמור במקום נגיש (שיהיה זמין גם בכיתה) את פרטי ההתחברות למערכות
                     המכון, ולהתקין בנייד את אפליקציית האימות הדו-שלבי.</span></label><button class="info-button"
@@ -249,17 +251,20 @@
                     data-task-id="tech-hybrid"><span>לעבור הדרכה על הפעלת כיתה היברידית </br> (במידה ומלמדים בפורמט
                     היברידי).</span></label><button class="info-button" type="button" data-task-info="tech-hybrid">מידע
                   נוסף</button></li>
-            </ul>
+              </ul>
+            </div>
           </article>
 
           <article class="checklist-group paper-card">
-            <div class="group-heading">
+            <button class="group-heading checklist-group-toggle" id="checklist-group-2-toggle" type="button"
+              aria-expanded="true" aria-controls="checklist-group-2-content">
               <span class="group-number" aria-hidden="true">2</span>
-              <div>
-                <h3>הכנת הכיתה הפיזית והדיגיטלית</h3>
-              </div>
-            </div>
-            <ul class="task-list">
+              <span class="group-heading-title" role="heading" aria-level="3">הכנת הכיתה הפיזית והדיגיטלית</span>
+              <span class="checklist-group-toggle-icon" aria-hidden="true"><i class="fi fi-rr-angle-small-down"></i></span>
+            </button>
+            <div class="checklist-group-content" id="checklist-group-2-content" role="region"
+              aria-labelledby="checklist-group-2-toggle">
+              <ul class="task-list">
               <li><label><input class="form-check-input task-checkbox" type="checkbox"
                     data-task-id="class-moodle-content"><span>להעלות את תכני הקורס ל-Moodle </br> (סילבוס, מצגת שיעור,
                     פרטי
@@ -280,17 +285,20 @@
                     מחשוב,
                     מוקד אור-קולי).</span></label><button class="info-button" type="button"
                   data-task-info="class-contacts">מידע נוסף</button></li>
-            </ul>
+              </ul>
+            </div>
           </article>
 
           <article class="checklist-group paper-card">
-            <div class="group-heading">
+            <button class="group-heading checklist-group-toggle" id="checklist-group-3-toggle" type="button"
+              aria-expanded="true" aria-controls="checklist-group-3-content">
               <span class="group-number" aria-hidden="true">3</span>
-              <div>
-                <h3>לקראת השיעור הראשון</h3>
-              </div>
-            </div>
-            <ul class="task-list">
+              <span class="group-heading-title" role="heading" aria-level="3">לקראת השיעור הראשון</span>
+              <span class="checklist-group-toggle-icon" aria-hidden="true"><i class="fi fi-rr-angle-small-down"></i></span>
+            </button>
+            <div class="checklist-group-content" id="checklist-group-3-content" role="region"
+              aria-labelledby="checklist-group-3-toggle">
+              <ul class="task-list">
               <li><label><input class="form-check-input task-checkbox" type="checkbox"
                     data-task-id="first-expectations"><span>לתכנן את תיאום הציפיות לקראת השיעור
                     הראשון.</span></label><button class="info-button" type="button"
@@ -306,7 +314,8 @@
               <li><label><input class="form-check-input task-checkbox" type="checkbox"
                     data-task-id="first-center"><span>לקבוע פגישה ראשונה עם המרכז לקידום ההוראה.</span></label><button
                   class="info-button" type="button" data-task-info="first-center">מידע נוסף</button></li>
-            </ul>
+              </ul>
+            </div>
           </article>
         </div>
       </div>
@@ -323,7 +332,8 @@
           <h2 id="toolbox-title">ארגז כלים להוראה</h2>
           <div class="paper-card p-4">
             <p class="toolbox-description mb-0">ריכזנו עבורכם טעימה מהכלים והמדריכים הכי פרקטיים לתחילת הדרך — מומלץ
-              להציץ, לשמור במועדפים ולשלוף אותם בדיוק כשצריך. למעבר בין הנושאים, יש ללחוץ על הלשוניות.</p>
+              להציץ, לשמור במועדפים ולשלוף אותם בדיוק כשצריך. <span class="d-none d-md-inline">למעבר בין הנושאים, יש
+                ללחוץ על הלשוניות.</span><span class="d-md-none">לפתיחת נושא, יש ללחוץ על הכותרת שלו.</span></p>
           </div>
 
         </div>
@@ -351,7 +361,13 @@
               <div class="tab-content mt-4" id="resourceTabContent">
                 <div class="tab-pane fade show active" id="start-pane" role="tabpanel" aria-labelledby="start-tab"
                   tabindex="0">
-                  <article class="resource-card mb-3">
+                  <button class="mobile-resource-toggle" id="mobile-start-toggle" type="button" aria-expanded="true"
+                    aria-controls="mobile-start-content">
+                    <span>היערכות לשיעור הראשון</span><i class="fi fi-rr-angle-small-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="mobile-resource-content" id="mobile-start-content" role="region"
+                    aria-labelledby="mobile-start-toggle">
+                    <article class="resource-card mb-3">
                     <div>
                       <h3>מיישרים קו: הצגת מסגרת הקורס במפגש הראשון</h3>
                       <p>תבנית מצגת למילוי אישי המרכזת את כל הנושאים החשובים לתיאום ציפיות בשיעור הראשון לסמסטר.</p>
@@ -366,10 +382,17 @@
                       <a href="https://md.hit.ac.il/mod/page/view.php?id=938393&forceview=1" target="_blank"
                         class="info-button text-decoration-none">למעבר לממשק</a>
                     </div>
-                  </article>
+                    </article>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="ai-pane" role="tabpanel" aria-labelledby="ai-tab" tabindex="0">
-                  <article class="resource-card mb-3">
+                  <button class="mobile-resource-toggle" id="mobile-ai-toggle" type="button" aria-expanded="true"
+                    aria-controls="mobile-ai-content">
+                    <span>שילוב AI בהוראה</span><i class="fi fi-rr-angle-small-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="mobile-resource-content" id="mobile-ai-content" role="region"
+                    aria-labelledby="mobile-ai-toggle">
+                    <article class="resource-card mb-3">
                     <div>
                       <h3>מדריך להתאמת קורס לעידן ה AI: צעד אחר צעד</h3>
                       <p>המדריך מציע מסלול פשוט וברור לעדכון הסילבוס, להתאמת ההוראה ולהעצמת חוויית הלמידה בעידן המשתנה.
@@ -386,10 +409,17 @@
                       <a href="https://md.hit.ac.il/mod/page/view.php?id=881783&forceview=1" target="_blank"
                         class="info-button text-decoration-none">לצפייה בתכנים</a>
                     </div>
-                  </article>
+                    </article>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="ready-pane" role="tabpanel" aria-labelledby="ready-tab" tabindex="0">
-                  <p class="resource-card">מגוון תכני למידה מוכנים מראש שניתן לשלב באופן מלא או חלקי בתוך הקורס שלכם.
+                  <button class="mobile-resource-toggle" id="mobile-ready-toggle" type="button" aria-expanded="true"
+                    aria-controls="mobile-ready-content">
+                    <span>תכנים מוכנים לשילוב בכיתה</span><i class="fi fi-rr-angle-small-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="mobile-resource-content" id="mobile-ready-content" role="region"
+                    aria-labelledby="mobile-ready-toggle">
+                    <p class="resource-card">מגוון תכני למידה מוכנים מראש שניתן לשלב באופן מלא או חלקי בתוך הקורס שלכם.
                     </br> לשילוב בקורס יש
                     ליצור קשר עם
                     המרכז לקידום ההוראה.</p>
@@ -410,7 +440,8 @@
                       <a href="https://md.hit.ac.il/mod/page/view.php?id=866018&forceview=1" target="_blank"
                         class="info-button text-decoration-none">לצפייה במדריך</a>
                     </div>
-                  </article>
+                    </article>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1043,7 +1074,7 @@
 
   <script src="assets/js/content.js?v=20260820_v30"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js?v=20260820_v32"></script>
+  <script src="assets/js/main.js?v=20260820_v33"></script>
 </body>
 
 </html>
