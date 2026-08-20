@@ -2280,6 +2280,66 @@ input {
   transform: translateX(-50%) scaleX(var(--kelp-flip, 1));
 }
 
+.about-kelp-field>img:not(.kelp-background) {
+  animation: kelp-water-sway var(--kelp-sway-duration, 7s) ease-in-out var(--kelp-sway-delay, 0s) infinite;
+  animation-play-state: paused;
+}
+
+.about-kelp-field>img:not(.kelp-background):nth-child(3n + 1) {
+  --kelp-sway-duration: 7.4s;
+  --kelp-sway-delay: -2.6s;
+}
+
+.about-kelp-field>img:not(.kelp-background):nth-child(3n + 2) {
+  --kelp-sway-duration: 8.3s;
+  --kelp-sway-delay: -5.1s;
+}
+
+.about-kelp-field>img:not(.kelp-background):nth-child(3n) {
+  --kelp-sway-duration: 6.6s;
+  --kelp-sway-delay: -3.8s;
+}
+
+.about-kelp-field .kelp-background {
+  animation: kelp-background-water-sway 10.5s ease-in-out -4.4s infinite;
+  animation-play-state: paused;
+}
+
+.about-kelp-field img:nth-child(12).kelp-background {
+  animation-delay: -7.2s;
+}
+
+.about-kelp-field.is-kelp-animating>img:not(.kelp-background),
+.about-kelp-field.is-kelp-animating .kelp-background {
+  animation-play-state: running;
+}
+
+@keyframes kelp-water-sway {
+  0%,
+  100% {
+    transform: skewX(-1.1deg) rotate(-.7deg) scaleX(var(--kelp-flip, 1)) scaleY(.99);
+  }
+
+  46% {
+    transform: skewX(1.8deg) rotate(1.1deg) scaleX(var(--kelp-flip, 1)) scaleY(1.02);
+  }
+
+  72% {
+    transform: skewX(.55deg) rotate(.3deg) scaleX(var(--kelp-flip, 1)) scaleY(1.005);
+  }
+}
+
+@keyframes kelp-background-water-sway {
+  0%,
+  100% {
+    transform: translateX(-50%) skewX(-.8deg) rotate(-.45deg) scaleX(var(--kelp-flip, 1)) scaleY(.995);
+  }
+
+  50% {
+    transform: translateX(-50%) skewX(1.25deg) rotate(.7deg) scaleX(var(--kelp-flip, 1)) scaleY(1.012);
+  }
+}
+
 .about-kelp-field img:nth-child(11) {
   left: 6%;
   --kelp-flip: -1;
@@ -3261,6 +3321,16 @@ input {
 
   .training-buoy {
     animation: none !important;
+  }
+
+  .about-kelp-field>img:not(.kelp-background) {
+    animation: none !important;
+    transform: scaleX(var(--kelp-flip, 1));
+  }
+
+  .about-kelp-field .kelp-background {
+    animation: none !important;
+    transform: translateX(-50%) scaleX(var(--kelp-flip, 1));
   }
 
 }

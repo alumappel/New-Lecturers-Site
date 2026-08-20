@@ -31,6 +31,8 @@
     return { direction: supportCreatureDirections[index] || 1, x: 0, path: 0 };
   });
   var lastSupportCreatureScroll = null;
+  var aboutKelpField = document.querySelector(".about-kelp-field");
+  var kelpScrollPauseTimer = null;
   var checklistSection = document.getElementById("checklist");
   var checklistFish = Array.from(document.querySelectorAll(".checklist-fish"));
   var checklistFishDirections = [1, 1, 1, -1, -1, 1, -1, 1, -1];
@@ -611,8 +613,23 @@
     ticking = false;
   }
 
+  function keepKelpAnimatingWhileScrolling() {
+    if (aboutKelpField) {
+      aboutKelpField.classList.add("is-kelp-animating");
+      window.clearTimeout(kelpScrollPauseTimer);
+      kelpScrollPauseTimer = window.setTimeout(function () {
+        aboutKelpField.classList.remove("is-kelp-animating");
+      }, 650);
+    }
+  }
+
   function requestParallaxUpdate() {
-    if (reduceMotion.matches || ticking) return;
+    if (reduceMotion.matches) return;
+
+    keepKelpAnimatingWhileScrolling();
+
+    if (ticking) return;
+
     ticking = true;
     window.requestAnimationFrame(updateParallax);
   }
@@ -645,6 +662,8 @@
         motion.path = 0;
       });
       lastSupportCreatureScroll = null;
+      window.clearTimeout(kelpScrollPauseTimer);
+      if (aboutKelpField) aboutKelpField.classList.remove("is-kelp-animating");
       window.removeEventListener("scroll", requestParallaxUpdate);
     } else {
       updateParallax();
