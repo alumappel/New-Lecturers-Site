@@ -2294,9 +2294,62 @@ input {
   color: #583f00;
 }
 
-.connected-banner .btn-dark {
+.connected-banner .btn-dark,
+.connected-modal-content .btn-dark {
   color: #fff;
   background: var(--deep);
+  border-color: #00373b;
+  box-shadow: 0 5px 0 #00282b;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.connected-banner .btn-dark:hover,
+.connected-banner .btn-dark:focus,
+.connected-modal-content .btn-dark:hover,
+.connected-modal-content .btn-dark:focus {
+  color: #fff;
+  background: var(--teal);
+  border-color: #005157;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #00282b, 0 10px 2px -1px rgba(0, 0, 0, 0.32);
+}
+
+.connected-banner .btn-dark:active,
+.connected-modal-content .btn-dark:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #00282b;
+}
+
+.connected-banner .btn-outline-dark,
+.connected-modal-content .btn-outline-dark,
+.connected-banner .info-button,
+.connected-modal-content .info-button {
+  color: var(--deep);
+  border: 2px solid var(--deep);
+  border-radius: 0.65rem;
+  background: transparent;
+  font-weight: 750;
+  box-shadow: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.connected-banner .btn-outline-dark:hover,
+.connected-banner .btn-outline-dark:focus,
+.connected-banner .btn-outline-dark:active,
+.connected-modal-content .btn-outline-dark:hover,
+.connected-modal-content .btn-outline-dark:focus,
+.connected-modal-content .btn-outline-dark:active,
+.connected-banner .info-button:hover,
+.connected-banner .info-button:focus,
+.connected-banner .info-button:active,
+.connected-modal-content .info-button:hover,
+.connected-modal-content .info-button:focus,
+.connected-modal-content .info-button:active {
+  color: var(--deep);
+  background: #dce9ea;
+  border-color: var(--deep);
+  transform: none;
+  box-shadow: none;
 }
 
 .seabed {
