@@ -1225,7 +1225,7 @@ input {
 }
 
 .resource-panel {
-  --resource-panel-tail: clamp(11rem, 17vw, 18rem);
+  --resource-panel-tail: clamp(5rem, 8vw, 8rem);
   position: relative;
   padding: clamp(1.2rem, 3vw, 2rem);
   padding-block-end: calc(clamp(1.2rem, 3vw, 2rem) + var(--resource-panel-tail));
@@ -1258,7 +1258,7 @@ input {
 
 .resource-panel .tab-content {
   display: grid;
-  min-height: clamp(34rem, 40vw, 40rem);
+  min-height: clamp(27rem, 30vw, 32rem);
 }
 
 .resource-panel .tab-content>.tab-pane {
@@ -2882,11 +2882,11 @@ input {
   }
 
   .resource-panel {
-    --resource-panel-tail: clamp(9rem, 16vw, 13rem);
+    --resource-panel-tail: 5rem;
   }
 
   .resource-panel .tab-content {
-    min-height: 38rem;
+    min-height: 32rem;
   }
 
   .teachhit-banner.toolbox-teachhit {
@@ -2999,11 +2999,11 @@ input {
   }
 
   .resource-panel {
-    --resource-panel-tail: 7rem;
+    --resource-panel-tail: 3.5rem;
   }
 
   .resource-panel .tab-content {
-    min-height: 44rem;
+    min-height: 38rem;
   }
 
   .teachhit-banner.toolbox-teachhit {
