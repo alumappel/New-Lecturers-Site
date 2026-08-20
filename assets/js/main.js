@@ -529,9 +529,9 @@
     var rootStyle = document.documentElement.style;
 
     rootStyle.setProperty("--sky-shift", (scrollY * 0.025).toFixed(2) + "px");
-    rootStyle.setProperty("--diver-drop", (cappedHero * 0.16).toFixed(2) + "px");
-    rootStyle.setProperty("--diver-rotate", (cappedHero * 0.025).toFixed(2) + "deg");
     rootStyle.setProperty("--bubbles-shift", (scrollY * -0.018).toFixed(2) + "px");
+    rootStyle.setProperty("--hero-cloud-one-drift", (cappedHero * 0.12).toFixed(2) + "px");
+    rootStyle.setProperty("--hero-cloud-two-drift", (cappedHero * -0.12).toFixed(2) + "px");
 
     if (toolboxSection && desktopViewport.matches) {
       if (toolboxCoralTwo) {

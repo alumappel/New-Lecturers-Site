@@ -35,8 +35,6 @@
     0 8px 2px -2px rgba(0, 35, 39, .32);
   --radius: 1.5rem;
   --sky-shift: 0px;
-  --diver-drop: 0px;
-  --diver-rotate: 0deg;
   --bubbles-shift: 0px;
   --checklist-bubbles-shift: 0px;
   --bs-primary: #ffc82d;
@@ -406,7 +404,6 @@ input {
   bottom: clamp(27.5rem, 49vh, 34rem);
   width: clamp(6.2rem, 8vw, 8.75rem);
   z-index: 3;
-  transform: translate3d(0, var(--diver-drop), 0) rotate(var(--diver-rotate));
   transform-origin: 50% 75%;
   filter:
     url(#paper-grain-filter) drop-shadow(0 3px 0 rgba(0, 81, 87, .22)) drop-shadow(0 8px 1px rgba(0, 45, 49, .44));
@@ -430,14 +427,16 @@ input {
 
 .hero-cloud-one {
   top: clamp(8rem, 15vh, 11rem);
-  left: clamp(4%, 8vw, 10%);
+  left: clamp(-4rem, -2vw, -1rem);
   width: clamp(8rem, 13vw, 13.5rem);
+  transform: translateX(var(--hero-cloud-one-drift, 0px));
 }
 
 .hero-cloud-two {
-  top: clamp(4.75rem, 8vh, 6.5rem);
-  right: clamp(-3rem, 2vw, 2rem);
+  top: clamp(8rem, 13vh, 10rem);
+  right: clamp(-6rem, -4vw, -2.5rem);
   width: clamp(12rem, 20vw, 21rem);
+  transform: translateX(var(--hero-cloud-two-drift, 0px));
 }
 
 .journey-nav {
