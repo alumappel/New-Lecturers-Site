@@ -16,6 +16,10 @@
   var siteNavbar = document.getElementById("siteNavbar");
   var mainNav = document.getElementById("mainNav");
   var backToTop = document.getElementById("backToTop");
+  var sectionNavItems = Array.from(document.querySelectorAll('#mainNav .nav-link[href^="#"]')).map(function (navLink) {
+    var section = document.querySelector(navLink.getAttribute("href"));
+    return section ? { navLink: navLink, section: section } : null;
+  }).filter(Boolean);
 
   // נקודת חיבור עתידית לאנליטיקה. כרגע אינה שולחת מידע לשום שירות.
   window.siteAnalytics = window.siteAnalytics || function () { };
@@ -357,6 +361,7 @@
         behavior: reduceMotion.matches ? "auto" : "smooth",
         block: "start"
       });
+      window.setTimeout(requestPersistentControlsUpdate, 0);
 
       if (targetId !== "#top") {
         window.history.replaceState(null, "", targetId);
@@ -370,11 +375,37 @@
 
   var persistentControlsTicking = false;
 
+  function updateSectionNavigation() {
+    if (!sectionNavItems.length) return;
+
+    var navbarHeight = siteNavbar ? siteNavbar.getBoundingClientRect().height : 0;
+    var activationLine = navbarHeight + ((window.innerHeight - navbarHeight) * 0.28);
+    var activeItem = null;
+
+    sectionNavItems.forEach(function (item) {
+      if (item.section.getBoundingClientRect().top <= activationLine) {
+        activeItem = item;
+      }
+    });
+
+    sectionNavItems.forEach(function (item) {
+      var isActive = item === activeItem;
+      item.navLink.classList.toggle("active", isActive);
+
+      if (isActive) {
+        item.navLink.setAttribute("aria-current", "location");
+      } else {
+        item.navLink.removeAttribute("aria-current");
+      }
+    });
+  }
+
   function updatePersistentControls() {
     var currentY = Math.max(0, window.scrollY || window.pageYOffset);
     siteNavbar.classList.remove("nav-hidden");
     siteNavbar.classList.toggle("nav-at-top", currentY < 24);
     backToTop.classList.toggle("is-visible", currentY > 420);
+    updateSectionNavigation();
     persistentControlsTicking = false;
   }
 
@@ -385,25 +416,9 @@
   }
 
   window.addEventListener("scroll", requestPersistentControlsUpdate, { passive: true });
+  window.addEventListener("resize", requestPersistentControlsUpdate, { passive: true });
+  window.addEventListener("load", requestPersistentControlsUpdate, { once: true });
   updatePersistentControls();
-
-  if (window.bootstrap && window.bootstrap.ScrollSpy) {
-    new window.bootstrap.ScrollSpy(document.body, {
-      target: "#mainNav",
-      rootMargin: "-22% 0px -62%",
-      smoothScroll: false
-    });
-
-    window.addEventListener("activate.bs.scrollspy", function () {
-      document.querySelectorAll("#mainNav .nav-link").forEach(function (navLink) {
-        if (navLink.classList.contains("active")) {
-          navLink.setAttribute("aria-current", "location");
-        } else {
-          navLink.removeAttribute("aria-current");
-        }
-      });
-    });
-  }
 
   var ticking = false;
 

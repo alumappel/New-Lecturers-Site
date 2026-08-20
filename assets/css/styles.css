@@ -977,6 +977,8 @@ input {
 
 .progress-panel {
   margin-block-end: 2rem;
+  margin-inline: auto;
+  max-width: 68rem;
   padding: 1.5rem;
   color: var(--ink);
 }
@@ -1168,6 +1170,11 @@ input {
 .toolbox-heading {
   position: relative;
   z-index: 7;
+}
+
+.toolbox-heading .toolbox-description {
+  color: var(--deep);
+  font-size: 1.2rem;
 }
 
 .treasure-part {
@@ -2789,15 +2796,15 @@ input {
   color: var(--deep);
 }
 
-.back-to-top:hover {
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
 .back-to-top.is-visible {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
+}
+
+.back-to-top.is-visible:hover,
+.back-to-top.is-visible:focus-visible {
+  transform: translateY(-2px) scale(1.08);
 }
 
 .connected-modal-content .modal-body {
