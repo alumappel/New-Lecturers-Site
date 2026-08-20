@@ -31,10 +31,10 @@ main > :not(#checklist) {
   background: #fff !important;
 }
 
-#checklist::before,
-.checklist-wave-edge,
-.checklist-fish-field,
-.no-print,
+  #checklist::before,
+  .checklist-wave-edge,
+  .checklist-fish-field,
+  .no-print,
 .info-button,
 .eyebrow {
   display: none !important;

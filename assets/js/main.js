@@ -20,6 +20,13 @@
   var siteNavbar = document.getElementById("siteNavbar");
   var mainNav = document.getElementById("mainNav");
   var backToTop = document.getElementById("backToTop");
+  var checklistSection = document.getElementById("checklist");
+  var checklistFish = Array.from(document.querySelectorAll(".checklist-fish"));
+  var checklistFishDirections = [1, 1, 1, -1, -1, 1, -1, 1, -1];
+  var checklistFishMotion = checklistFish.map(function (fish, index) {
+    return { direction: checklistFishDirections[index] || 1, x: 0, path: 0 };
+  });
+  var lastChecklistScroll = null;
   var mobileViewport = window.matchMedia("(max-width: 767.98px)");
   var checklistGroupToggles = Array.from(document.querySelectorAll(".checklist-group-toggle"));
   var mobileResourceToggles = Array.from(document.querySelectorAll(".mobile-resource-toggle"));
@@ -512,6 +519,38 @@
     rootStyle.setProperty("--diver-drop", (cappedHero * 0.16).toFixed(2) + "px");
     rootStyle.setProperty("--diver-rotate", (cappedHero * 0.025).toFixed(2) + "deg");
     rootStyle.setProperty("--bubbles-shift", (scrollY * -0.018).toFixed(2) + "px");
+
+    if (checklistSection && checklistFish.length) {
+      var checklistBounds = checklistSection.getBoundingClientRect();
+      var isChecklistVisible = checklistBounds.bottom > 0 && checklistBounds.top < window.innerHeight;
+
+      if (isChecklistVisible) {
+        var checklistScroll = scrollY - (checklistSection.offsetTop - window.innerHeight);
+        var bubbleShift = Math.max(-180, Math.min(0, checklistScroll * -0.11));
+
+        rootStyle.setProperty("--checklist-bubbles-shift", bubbleShift.toFixed(2) + "px");
+
+        checklistFish.forEach(function (fish, index) {
+          var motion = checklistFishMotion[index];
+          var scrollDelta = lastChecklistScroll === null ? 0 : Math.max(-56, Math.min(56, checklistScroll - lastChecklistScroll));
+
+          motion.x = Math.max(-80, Math.min(80, motion.x + (scrollDelta * 0.07 * motion.direction)));
+          motion.path += Math.abs(scrollDelta) * 0.065;
+
+          var swimY = Math.sin((motion.path * 0.18) + (index * 1.35)) * 4;
+          var swimTurn = Math.sin((motion.path * 0.12) + (index * 1.35)) * 2.4;
+
+          fish.style.setProperty("--fish-swim-x", motion.x.toFixed(2) + "px");
+          fish.style.setProperty("--fish-swim-y", swimY.toFixed(2) + "px");
+          fish.style.setProperty("--fish-swim-turn", swimTurn.toFixed(2) + "deg");
+        });
+
+        lastChecklistScroll = checklistScroll;
+      } else {
+        lastChecklistScroll = null;
+      }
+    }
+
     ticking = false;
   }
 
@@ -529,6 +568,16 @@
   reduceMotion.addEventListener("change", function (event) {
     if (event.matches) {
       document.documentElement.removeAttribute("style");
+      checklistFish.forEach(function (fish) {
+        fish.style.removeProperty("--fish-swim-x");
+        fish.style.removeProperty("--fish-swim-y");
+        fish.style.removeProperty("--fish-swim-turn");
+      });
+      checklistFishMotion.forEach(function (motion) {
+        motion.x = 0;
+        motion.path = 0;
+      });
+      lastChecklistScroll = null;
       window.removeEventListener("scroll", requestParallaxUpdate);
     } else {
       updateParallax();

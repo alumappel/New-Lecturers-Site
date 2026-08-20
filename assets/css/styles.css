@@ -38,6 +38,7 @@
   --diver-drop: 0px;
   --diver-rotate: 0deg;
   --bubbles-shift: 0px;
+  --checklist-bubbles-shift: 0px;
   --bs-primary: #ffc82d;
   --bs-primary-rgb: 255, 200, 45;
   --bs-body-font-family: "Assistant", Arial, sans-serif;
@@ -855,7 +856,11 @@ input {
       var(--shallow) var(--checklist-wave-edge-height),
       #32aeb8 calc(var(--checklist-wave-edge-height) + 10rem),
       var(--water) 56%,
-      var(--teal) 100%);
+       var(--teal) 100%);
+}
+
+.checklist-section::before {
+  transform: translateY(var(--checklist-bubbles-shift));
 }
 
 .checklist-wave-edge {
@@ -888,6 +893,9 @@ input {
 }
 
 .checklist-fish {
+  --fish-swim-x: 0px;
+  --fish-swim-y: 0px;
+  --fish-swim-turn: 0deg;
   position: absolute;
   display: block;
   width: clamp(6rem, 9vw, 10rem);
@@ -900,62 +908,62 @@ input {
   top: 5%;
   left: -2rem;
   width: clamp(7rem, 10vw, 11rem);
-  transform: scaleX(-1) rotate(3deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) scaleX(-1) rotate(calc(3deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(2) {
   top: 15%;
   right: 1%;
-  transform: scaleX(-1) rotate(-4deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) scaleX(-1) rotate(calc(-4deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(3) {
   top: 27%;
   left: 3%;
   width: clamp(5.5rem, 8vw, 8.5rem);
-  transform: rotate(-2deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) rotate(calc(-2deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(4) {
   top: 39%;
   right: -2.5rem;
   width: clamp(8rem, 11vw, 12rem);
-  transform: scaleX(-1) rotate(2deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) scaleX(-1) rotate(calc(2deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(5) {
   top: 51%;
   left: -2rem;
   width: clamp(7rem, 10vw, 10.5rem);
-  transform: rotate(4deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) rotate(calc(4deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(6) {
   top: 63%;
   right: 4%;
   width: clamp(6rem, 8vw, 9rem);
-  transform: scaleX(-1) rotate(-3deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) scaleX(-1) rotate(calc(-3deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(7) {
   top: 74%;
   left: 1%;
   width: clamp(8.5rem, 12vw, 13rem);
-  transform: rotate(2deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) rotate(calc(2deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(8) {
   top: 85%;
   right: 0;
   width: clamp(5.5rem, 7vw, 8rem);
-  transform: scaleX(-1) rotate(4deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) scaleX(-1) rotate(calc(4deg + var(--fish-swim-turn)));
 }
 
 .checklist-fish:nth-child(9) {
   top: 93%;
   left: 12%;
   width: clamp(6.5rem, 9vw, 9.5rem);
-  transform: rotate(-3deg);
+  transform: translate3d(var(--fish-swim-x), var(--fish-swim-y), 0) rotate(calc(-3deg + var(--fish-swim-turn)));
 }
 
 .print-checklist-header {
@@ -3230,6 +3238,7 @@ input {
   .training-buoy {
     animation: none !important;
   }
+
 }
 
 @media (forced-colors: active) {
